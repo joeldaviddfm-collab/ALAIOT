@@ -351,6 +351,11 @@ def main(argv: list[str] | None = None) -> int:
     }
 
     summary = write_full_report(cfg, bundle) if args.report else {"go_ok": None, "criteria": []}
+    if args.report:
+        from src.reporting.dashboard import build_dashboard
+
+        dash = build_dashboard(cfg)
+        log.info("dashboard_written", path=str(dash))
     # baseline para regresión en CI
     (cfg.reports_dir / "baseline_metrics.json").write_text(
         __import__("json").dumps(

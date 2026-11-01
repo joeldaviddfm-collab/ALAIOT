@@ -142,6 +142,11 @@ nunca rellenamos con suposiciones.**
   calcula la **precisión en vivo** global y por umbral de confianza.
 - `report.md`, `go_no_go.md`, `reports/` (curva de equity, drawdown, precisión por umbral,
   métricas por activo y por régimen, `metrics.json`, `alerts.log`).
+- **`reports/dashboard.html`**: dashboard visual **auto-contenido** (un solo archivo HTML con
+  CSS y gráficos incrustados, sin servidor ni dependencias externas). Se abre con doble clic en
+  el navegador (`file://`) y se ve como una web: KPIs out-of-sample, señales de hoy, compuerta
+  GO/NO-GO, gráficos, alertas y el informe completo. Se regenera solo tras cada backtest y en el
+  workflow diario (`python scripts/build_dashboard.py`).
 
 ## 8. Automatización (GitHub Actions)
 
