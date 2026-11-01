@@ -13,7 +13,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import pandas as pd  # noqa: E402
 from dotenv import load_dotenv  # noqa: E402
-
 from src.config import ROOT, Config  # noqa: E402
 from src.utils.alerts import AlertBus  # noqa: E402
 from src.utils.notify import load_live_accuracy, notify_signals_full  # noqa: E402
