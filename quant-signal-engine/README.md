@@ -169,6 +169,21 @@ tamaño, top-3 SHAP), cuántas salieron `nada`, la **precisión en vivo acumulad
 Brier) y el disclaimer. En `daily_signals.yml` cada corrida diaria envía la notificación
 automáticamente.
 
+### Telegram paso a paso (recomendado)
+
+1. En Telegram busca **@BotFather** → `/newbot` → dale un nombre → copia el **token** (`123456:ABC...`).
+2. Busca **@userinfobot** → `/start` → copia tu **chat id** (tu número). *Alternativa*: escríbele
+   `/start` a tu bot nuevo y usa el id que te dé @userinfobot.
+3. Local: copia `.env.example` a `.env` y rellena `TELEGRAM_TOKEN=` y `TELEGRAM_CHAT_ID=`.
+4. Prueba inmediata: `python scripts/test_notify.py` → debe llegar un mensaje de prueba a tu chat.
+5. En GitHub (para el workflow diario): repo → **Settings → Secrets and variables → Actions →
+   New repository secret** con `TELEGRAM_TOKEN` y `TELEGRAM_CHAT_ID`. Listo: cada día tras el cierre
+   (21:40 UTC días hábiles, 00:40 UTC cripto) recibirás las señales + la precisión en vivo.
+6. Opcional: `QSE_NOTIFY_CHANNELS=telegram` para usar solo Telegram.
+
+El token del bot es un secreto: nunca lo subas a GitHub (`.env` está gitignored y `gitleaks.yml` vigila
+que no se filtre). Si se filtra, revócalo con @BotFather (`/revoke`).
+
 ## 8. Automatización (GitHub Actions)
 
 - `daily_signals.yml`: cada día tras el cierre (21:40 UTC días hábiles + 00:40 UTC cripto)
