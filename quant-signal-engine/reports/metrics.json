@@ -1,0 +1,92 @@
+{
+  "data_mode": "synthetic",
+  "train": {
+    "n_days": 2053,
+    "sharpe": 0.0,
+    "sortino": 0.0,
+    "calmar": Infinity,
+    "max_drawdown": 0.0,
+    "cagr": 0.0,
+    "total_return": 0.0,
+    "volatility": 0.0,
+    "skew": 0.0,
+    "kurt": 0.0,
+    "cost_mult": 1.0
+  },
+  "val": {
+    "n_days": 2053,
+    "sharpe": 0.005601041117083682,
+    "sortino": 0.0022109873803295307,
+    "calmar": -0.0004572606839559153,
+    "max_drawdown": -0.05333073743987715,
+    "cagr": -2.4386049477631566e-05,
+    "total_return": -0.00019855482379005363,
+    "volatility": 0.01457847166944497,
+    "skew": 2.766444905531291,
+    "kurt": 145.7394614524328,
+    "n_trades": 185,
+    "win_rate": 0.4756756756756757,
+    "profit_factor": 1.0402380088535064,
+    "expectancy": 2.1117247791455585,
+    "avg_rr": 1.146625987031706,
+    "avg_r_multiple": 0.0025885339159693677,
+    "avg_hold_days": 7.048648648648649,
+    "avg_win": 114.76847439307723,
+    "avg_loss": -100.092336726277,
+    "cost_mult": 1.0
+  },
+  "blind": {
+    "n_days": 252,
+    "sharpe": 0.0,
+    "sortino": 0.0,
+    "calmar": Infinity,
+    "max_drawdown": 0.0,
+    "cagr": 0.0,
+    "total_return": 0.0,
+    "volatility": 0.0,
+    "skew": 0.0,
+    "kurt": 0.0,
+    "cost_mult": 1.0
+  },
+  "baseline_blind": {
+    "n_days": 252,
+    "sharpe": 0.4140448088871237,
+    "sortino": 0.4205921701659926,
+    "calmar": 0.38587701644078853,
+    "max_drawdown": -0.03646093386813598,
+    "cagr": 0.01406943637768121,
+    "total_return": 0.01401321591251703,
+    "volatility": 0.03523756673657129,
+    "skew": 0.19261309146408753,
+    "kurt": 0.7194713720049708
+  },
+  "buy_hold_blind": {
+    "n_days": 252,
+    "sharpe": 1.2331772647266523,
+    "sortino": 1.3638818428390629,
+    "calmar": 2.0457098792571524,
+    "max_drawdown": -0.11148530952010316,
+    "cagr": 0.22806659907731652,
+    "total_return": 0.22706583521463486,
+    "volatility": 0.17963808692420555,
+    "skew": 0.4961140583011072,
+    "kurt": 1.3409278282270116
+  },
+  "robustness": {
+    "perm_p": 1.0,
+    "random_p": 1.0,
+    "dsr": 0.0,
+    "deflated_p": 0.9999999701976776,
+    "pbo": 0.4,
+    "mc": {
+      "p_ruin": 1.0,
+      "ret_p05": 0.0,
+      "ret_p50": 0.0,
+      "ret_p95": 0.0,
+      "maxdd_p95": 0.0,
+      "n_sims": 0
+    },
+    "leakage_auc": 0.49789326924184085,
+    "n_configs": 43
+  }
+}

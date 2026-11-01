@@ -1,0 +1,10 @@
+title = "gitleaks config — quant-signal-engine"
+
+[allowlist]
+  description = "Ignora ejemplos documentales y placeholders"
+  paths = [
+    '''\.env\.example$''',
+    '''README\.md$''',
+    '''reports/''',
+    '''\.github/workflows/''',
+  ]

@@ -1,0 +1,8 @@
+{
+  "sharpe_blind": 0.0,
+  "max_dd_blind": 0.0,
+  "n_trades_blind": null,
+  "win_rate_blind": null,
+  "profit_factor_blind": null,
+  "data_mode": "synthetic"
+}

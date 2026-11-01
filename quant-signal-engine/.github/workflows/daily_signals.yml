@@ -1,0 +1,49 @@
+name: Daily signals (paper trading)
+on:
+  schedule:
+    - cron: "40 21 * * 1-5"  # tras el cierre de EE.UU. (21:40 UTC, lun- vie)
+    - cron: "40 0 * * *"     # cripto (cierre del día UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  signals:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+      - name: Generar señales (SOLO PAPER TRADING)
+        run: python -m src.run --mode paper
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          GLASSNODE_API_KEY: ${{ secrets.GLASSNODE_API_KEY }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      - name: Evaluar precisión en vivo de señales pasadas
+        run: python -m src.signals.evaluator || true
+      - name: Healthcheck (datos frescos, señales generadas)
+        id: hc
+        continue-on-error: true
+        run: python scripts/healthcheck.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+      - name: Commit de señales y reportes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add signals/ reports/ report.md go_no_go.md 2>/dev/null || true
+          git diff --cached --quiet || git commit -m "chore(signals): señales diarias paper $(date -u +%Y-%m-%d)"
+          git push
+      - name: Abrir issue automático si el healthcheck falló
+        if: steps.hc.outcome == 'failure'
+        run: gh issue create --title "🚨 Healthcheck diario falló ($(date -u +%Y-%m-%d))" --body "No se generaron señales recientes o los datos están viejos. Revisa reports/alerts.log y reports/healthcheck.log." || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

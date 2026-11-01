@@ -1,0 +1,693 @@
+[2026-11-01T15:49:23+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:49:29+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:49:29+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:49:35+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:49:35+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:49:35+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T15:49:41+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:49:47+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:49:53+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:49:59+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:49:59+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T15:50:05+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:50:11+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:50:18+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:50:18+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T15:50:24+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:50:30+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:50:36+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:50:42+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:50:48+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:50:54+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:50:54+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T15:51:00+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:06+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:12+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:18+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:18+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T15:51:18+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:51:41+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:41+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:41+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:51:41+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:41+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:51:41+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:41+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:41+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:51:41+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:41+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:51:41+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T15:51:41+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:41+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:41+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:41+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:41+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T15:51:41+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:41+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:42+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:42+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T15:51:42+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:42+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:42+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:42+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:42+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:42+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:42+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T15:51:42+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:42+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:42+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:42+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:51:42+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T15:51:42+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:51:42+00:00] CRITICAL: Sin datos de precios: no se puede entrenar; todas las señales serán NADA
+[2026-11-01T15:51:42+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:51:42+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:51:43+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:51:43+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:53:15+00:00] ERROR: Fuente global 'macro' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:53:15+00:00] ERROR: Fuente global 'sentiment' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:53:15+00:00] ERROR: Fuente global 'derivatives' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:53:15+00:00] ERROR: Fuente global 'onchain' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:53:15+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:53:15+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:53:15+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:53:15+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:15+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:16+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:16+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:16+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:16+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T15:53:16+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:16+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:16+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:16+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:53:16+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T15:53:16+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:53:16+00:00] CRITICAL: Sin datos de precios: no se puede entrenar; todas las señales serán NADA
+[2026-11-01T15:53:16+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:53:16+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:53:18+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:53:18+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente global 'macro' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:54:06+00:00] ERROR: Fuente global 'sentiment' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:54:06+00:00] ERROR: Fuente global 'derivatives' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:54:06+00:00] ERROR: Fuente global 'onchain' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:54:06+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:54:06+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:54:06+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:54:06+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:06+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T15:54:06+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:54:06+00:00] CRITICAL: Sin datos de precios: no se puede entrenar; todas las señales serán NADA
+[2026-11-01T15:54:06+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:54:06+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:54:08+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:54:08+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente global 'macro' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:54:59+00:00] ERROR: Fuente global 'sentiment' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:54:59+00:00] ERROR: Fuente global 'derivatives' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:54:59+00:00] ERROR: Fuente global 'onchain' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:54:59+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:54:59+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:54:59+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:54:59+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:54:59+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T15:54:59+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:54:59+00:00] CRITICAL: Sin datos de precios: no se puede entrenar; todas las señales serán NADA
+[2026-11-01T15:54:59+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:54:59+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:55:01+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:55:01+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente global 'macro' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:55:22+00:00] ERROR: Fuente global 'sentiment' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:55:22+00:00] ERROR: Fuente global 'derivatives' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:55:22+00:00] ERROR: Fuente global 'onchain' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:55:22+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:55:22+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:55:22+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:55:22+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:55:22+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T15:55:22+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:55:22+00:00] CRITICAL: Sin datos de precios: no se puede entrenar; todas las señales serán NADA
+[2026-11-01T15:55:22+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:55:22+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:55:26+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:55:26+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:56:16+00:00] ERROR: Fuente global 'macro' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:56:16+00:00] ERROR: Fuente global 'sentiment' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:56:16+00:00] ERROR: Fuente global 'derivatives' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:56:16+00:00] ERROR: Fuente global 'onchain' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:56:16+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:56:16+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:56:16+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:56:16+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:16+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:17+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:17+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:17+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:17+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T15:56:17+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:17+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:17+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:17+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:56:17+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T15:56:17+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:56:17+00:00] CRITICAL: Sin datos de precios: no se puede entrenar; todas las señales serán NADA
+[2026-11-01T15:56:17+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:56:17+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:56:19+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:56:20+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:56:22+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:56:24+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:56:24+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:56:35+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:56:41+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:57:11+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:57:37+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:57:50+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:58:00+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:58:01+00:00] INFO: Entrenando modelo sobre 2000 filas (59 features)...
+[2026-11-01T15:58:06+00:00] INFO: Modelo guardado en /home/user/quant-signal-engine/models/signal_model.joblib
+[2026-11-01T15:58:06+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente global 'macro' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:58:34+00:00] ERROR: Fuente global 'sentiment' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:58:34+00:00] ERROR: Fuente global 'derivatives' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:58:34+00:00] ERROR: Fuente global 'onchain' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:58:34+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:58:34+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:58:34+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:58:34+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:58:34+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T15:58:34+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:58:35+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:58:35+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:58:36+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:58:36+00:00] INFO: Entrenando modelo sobre 2000 filas (59 features)...
+[2026-11-01T15:58:41+00:00] INFO: Modelo guardado en /home/user/quant-signal-engine/models/signal_model.joblib
+[2026-11-01T15:58:41+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T15:58:43+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:58:44+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:58:46+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:58:46+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T15:58:54+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:59:41+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:59:55+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:55+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:55+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:59:55+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:55+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:59:55+00:00] ERROR: Fuente global 'macro' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:59:55+00:00] ERROR: Fuente global 'sentiment' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:59:56+00:00] ERROR: Fuente global 'derivatives' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:59:56+00:00] ERROR: Fuente global 'onchain' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T15:59:56+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:59:56+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:59:56+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T15:59:56+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T15:59:56+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T15:59:56+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T15:59:56+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T15:59:56+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T15:59:58+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T15:59:59+00:00] INFO: Entrenando modelo sobre 2000 filas (59 features)...
+[2026-11-01T16:00:03+00:00] INFO: Modelo guardado en /home/user/quant-signal-engine/models/signal_model.joblib
+[2026-11-01T16:00:04+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T16:00:05+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:00:06+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T16:00:08+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:00:10+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:00:12+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T16:00:12+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T16:00:22+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:00:28+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:00:37+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:37+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:37+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T16:00:37+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:37+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T16:00:37+00:00] ERROR: Fuente global 'macro' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:00:37+00:00] ERROR: Fuente global 'sentiment' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:00:37+00:00] ERROR: Fuente global 'derivatives' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:00:37+00:00] ERROR: Fuente global 'onchain' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:00:37+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T16:00:37+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T16:00:37+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T16:00:37+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:37+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:37+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T16:00:37+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:37+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T16:00:37+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T16:00:37+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:37+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:37+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:37+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:37+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T16:00:37+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:37+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:37+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:37+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T16:00:38+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:38+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:38+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:38+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:38+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:38+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:38+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T16:00:38+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:38+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:38+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:38+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:00:38+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T16:00:38+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T16:00:38+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T16:00:38+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T16:00:40+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:00:41+00:00] INFO: Entrenando modelo sobre 2000 filas (59 features)...
+[2026-11-01T16:00:46+00:00] INFO: Modelo guardado en /home/user/quant-signal-engine/models/signal_model.joblib
+[2026-11-01T16:00:46+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T16:00:48+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:00:49+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T16:00:51+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:01:33+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:01:36+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T16:01:36+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T16:01:46+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:01:53+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente global 'macro' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:02:39+00:00] ERROR: Fuente global 'sentiment' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:02:39+00:00] ERROR: Fuente global 'derivatives' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:02:39+00:00] ERROR: Fuente global 'onchain' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:02:39+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T16:02:39+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T16:02:39+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T16:02:39+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:02:39+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T16:02:39+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T16:02:40+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T16:02:40+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T16:02:42+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:02:43+00:00] INFO: Entrenando modelo sobre 2000 filas (59 features)...
+[2026-11-01T16:02:48+00:00] INFO: Modelo guardado en /home/user/quant-signal-engine/models/signal_model.joblib
+[2026-11-01T16:02:48+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T16:02:50+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:02:51+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T16:02:53+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:03:42+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:03:45+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T16:03:45+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T16:03:55+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:04:06+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:04:52+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente global 'macro' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:05:52+00:00] ERROR: Fuente global 'sentiment' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:05:52+00:00] ERROR: Fuente global 'derivatives' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:05:52+00:00] ERROR: Fuente global 'onchain' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:05:52+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T16:05:52+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T16:05:52+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T16:05:52+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:05:52+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T16:05:52+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T16:05:52+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T16:05:52+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T16:05:54+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:05:55+00:00] INFO: Entrenando modelo sobre 2000 filas (59 features)...
+[2026-11-01T16:05:59+00:00] INFO: Modelo guardado en /home/user/quant-signal-engine/models/signal_model.joblib
+[2026-11-01T16:06:00+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T16:06:02+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:06:02+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T16:06:04+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:07:28+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:07:31+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T16:07:31+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T16:07:40+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente global 'macro' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:07:46+00:00] ERROR: Fuente global 'sentiment' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:07:46+00:00] ERROR: Fuente global 'derivatives' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:07:46+00:00] ERROR: Fuente global 'onchain' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:07:46+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T16:07:46+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T16:07:46+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T16:07:46+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:07:46+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T16:07:46+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T16:07:46+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T16:07:46+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T16:07:47+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:07:48+00:00] INFO: Entrenando modelo sobre 2000 filas (59 features)...
+[2026-11-01T16:07:52+00:00] INFO: Modelo guardado en /home/user/quant-signal-engine/models/signal_model.joblib
+[2026-11-01T16:07:53+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T16:07:54+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:07:55+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T16:07:56+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:09:05+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:09:07+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T16:09:07+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T16:09:15+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente global 'macro' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:12:11+00:00] ERROR: Fuente global 'sentiment' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:12:11+00:00] ERROR: Fuente global 'derivatives' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:12:11+00:00] ERROR: Fuente global 'onchain' lanzó ConnectionError('down'); se continúa sin ella
+[2026-11-01T16:12:11+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T16:12:11+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T16:12:11+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'ccxt:binance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] CRITICAL: BTC-USD BLOQUEADO (sin datos válidos): BTC-USD: ninguna fuente de precios disponible (crypto) => señal NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'yfinance' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] CRITICAL: SPY BLOQUEADO (sin datos válidos): SPY: ninguna fuente de precios disponible (equity) => señal NADA
+[2026-11-01T16:12:11+00:00] INFO: FRED_API_KEY no definida; VIX/DXY/tasas vía yfinance (^VIX, DX-Y.NYB, ^TNX, ^FVX)
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'yf:^VIX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'yf:DX-Y.NYB' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'yf:^TNX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'yf:^FVX' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Macro no disponible en ninguna fuente (FRED/yfinance)
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'fear_greed' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'pytrends' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'news_rss' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Sentimiento no disponible en ninguna fuente
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'funding:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'oi_hist:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'ls_ratio:BTCUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'funding:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'oi_hist:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'ls_ratio:ETHUSDT' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Derivados cripto no disponibles (Binance fapi)
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'coingecko:bitcoin' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'coingecko:ethereum' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'blockchain:hash-rate' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: Fuente 'blockchain:n-transactions' no disponible tras 3 intentos; se activa fallback/NADA
+[2026-11-01T16:12:11+00:00] ERROR: On-chain no disponible en ninguna fuente
+[2026-11-01T16:12:11+00:00] CRITICAL: Sin datos globales (macro/sentimiento/derivados/on-chain); señales serán NADA
+[2026-11-01T16:12:11+00:00] CRITICAL: BTC-USD: señal NADA (BTC-USD: ninguna fuente de precios disponible (crypto))
+[2026-11-01T16:12:11+00:00] CRITICAL: SPY: señal NADA (SPY: ninguna fuente de precios disponible (equity))
+[2026-11-01T16:12:13+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:12:13+00:00] INFO: Entrenando modelo sobre 2000 filas (59 features)...
+[2026-11-01T16:12:18+00:00] INFO: Modelo guardado en /home/user/quant-signal-engine/models/signal_model.joblib
+[2026-11-01T16:12:18+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T16:12:19+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:12:20+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-01T16:12:21+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:13:31+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:13:33+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T16:13:33+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-01T16:13:40+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:13:50+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:22:31+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:22:34+00:00] INFO: Entrenando modelo sobre 11525 filas (59 features)...
+[2026-11-01T16:25:40+00:00] INFO: Modelo guardado en /home/user/quant-signal-engine/models/signal_model.joblib
+[2026-11-01T16:25:43+00:00] WARNING: BTC-USD: 2 saltos anómalos (máx |ret|=9.3%)
+[2026-11-01T16:25:43+00:00] WARNING: ETH-USD: 1 saltos anómalos (máx |ret|=8.3%)
+[2026-11-01T16:25:43+00:00] WARNING: EURUSD=X: 1 saltos anómalos (máx |ret|=10.6%)
+[2026-11-01T16:25:43+00:00] WARNING: QQQ: 1 saltos anómalos (máx |ret|=12.2%)
+[2026-11-01T16:25:43+00:00] WARNING: SPY: 2 saltos anómalos (máx |ret|=7.8%)
+[2026-11-01T16:25:44+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:25:52+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-01T16:25:56+00:00] WARNING: BTC-USD: 2 saltos anómalos (máx |ret|=9.3%)
+[2026-11-01T16:25:56+00:00] WARNING: ETH-USD: 1 saltos anómalos (máx |ret|=8.3%)
+[2026-11-01T16:25:56+00:00] WARNING: EURUSD=X: 1 saltos anómalos (máx |ret|=10.6%)
+[2026-11-01T16:25:56+00:00] WARNING: QQQ: 1 saltos anómalos (máx |ret|=12.2%)
+[2026-11-01T16:25:56+00:00] WARNING: SPY: 2 saltos anómalos (máx |ret|=7.8%)

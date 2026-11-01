@@ -1,0 +1,21 @@
+# Datos descargados (cache local) — NUNCA versionar datos de mercado
+/data/
+# Modelos entrenados (versionados externamente con DVC/MLflow si se desea)
+/models/
+# Secretos y kill switch local
+.env
+KILL_SWITCH
+# Logs
+/logs/
+# Entornos y caches
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+# Artefactos temporales
+*.tmp
+.DS_Store

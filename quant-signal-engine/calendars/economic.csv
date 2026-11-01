@@ -1,0 +1,290 @@
+date,event,impact
+2018-01-05,NFP,high
+2018-01-12,CPI (estimado),high
+2018-01-31,FOMC,high
+2018-02-02,NFP,high
+2018-02-12,CPI (estimado),high
+2018-03-02,NFP,high
+2018-03-12,CPI (estimado),high
+2018-03-21,FOMC,high
+2018-04-06,NFP,high
+2018-04-12,CPI (estimado),high
+2018-05-02,FOMC,high
+2018-05-04,NFP,high
+2018-05-12,CPI (estimado),high
+2018-06-01,NFP,high
+2018-06-12,CPI (estimado),high
+2018-06-13,FOMC,high
+2018-07-06,NFP,high
+2018-07-12,CPI (estimado),high
+2018-08-01,FOMC,high
+2018-08-03,NFP,high
+2018-08-12,CPI (estimado),high
+2018-09-07,NFP,high
+2018-09-12,CPI (estimado),high
+2018-09-26,FOMC,high
+2018-10-05,NFP,high
+2018-10-12,CPI (estimado),high
+2018-11-02,NFP,high
+2018-11-08,FOMC,high
+2018-11-12,CPI (estimado),high
+2018-12-07,NFP,high
+2018-12-12,CPI (estimado),high
+2018-12-19,FOMC,high
+2019-01-04,NFP,high
+2019-01-12,CPI (estimado),high
+2019-01-30,FOMC,high
+2019-02-01,NFP,high
+2019-02-12,CPI (estimado),high
+2019-03-01,NFP,high
+2019-03-12,CPI (estimado),high
+2019-03-20,FOMC,high
+2019-04-05,NFP,high
+2019-04-12,CPI (estimado),high
+2019-05-01,FOMC,high
+2019-05-03,NFP,high
+2019-05-12,CPI (estimado),high
+2019-06-07,NFP,high
+2019-06-12,CPI (estimado),high
+2019-06-19,FOMC,high
+2019-07-05,NFP,high
+2019-07-12,CPI (estimado),high
+2019-07-31,FOMC,high
+2019-08-02,NFP,high
+2019-08-12,CPI (estimado),high
+2019-09-06,NFP,high
+2019-09-12,CPI (estimado),high
+2019-09-18,FOMC,high
+2019-10-04,NFP,high
+2019-10-12,CPI (estimado),high
+2019-10-30,FOMC,high
+2019-11-01,NFP,high
+2019-11-12,CPI (estimado),high
+2019-12-06,NFP,high
+2019-12-11,FOMC,high
+2019-12-12,CPI (estimado),high
+2020-01-03,NFP,high
+2020-01-12,CPI (estimado),high
+2020-01-29,FOMC,high
+2020-02-07,NFP,high
+2020-02-12,CPI (estimado),high
+2020-03-03,FOMC,high
+2020-03-06,NFP,high
+2020-03-12,CPI (estimado),high
+2020-03-15,FOMC,high
+2020-04-03,NFP,high
+2020-04-12,CPI (estimado),high
+2020-04-29,FOMC,high
+2020-05-01,NFP,high
+2020-05-12,CPI (estimado),high
+2020-06-05,NFP,high
+2020-06-10,FOMC,high
+2020-06-12,CPI (estimado),high
+2020-07-03,NFP,high
+2020-07-12,CPI (estimado),high
+2020-07-29,FOMC,high
+2020-08-07,NFP,high
+2020-08-12,CPI (estimado),high
+2020-09-04,NFP,high
+2020-09-12,CPI (estimado),high
+2020-09-16,FOMC,high
+2020-10-02,NFP,high
+2020-10-12,CPI (estimado),high
+2020-11-05,FOMC,high
+2020-11-06,NFP,high
+2020-11-12,CPI (estimado),high
+2020-12-04,NFP,high
+2020-12-12,CPI (estimado),high
+2020-12-16,FOMC,high
+2021-01-01,NFP,high
+2021-01-12,CPI (estimado),high
+2021-01-27,FOMC,high
+2021-02-05,NFP,high
+2021-02-12,CPI (estimado),high
+2021-03-05,NFP,high
+2021-03-12,CPI (estimado),high
+2021-03-17,FOMC,high
+2021-04-02,NFP,high
+2021-04-12,CPI (estimado),high
+2021-04-28,FOMC,high
+2021-05-07,NFP,high
+2021-05-12,CPI (estimado),high
+2021-06-04,NFP,high
+2021-06-12,CPI (estimado),high
+2021-06-16,FOMC,high
+2021-07-02,NFP,high
+2021-07-12,CPI (estimado),high
+2021-07-28,FOMC,high
+2021-08-06,NFP,high
+2021-08-12,CPI (estimado),high
+2021-09-03,NFP,high
+2021-09-12,CPI (estimado),high
+2021-09-22,FOMC,high
+2021-10-01,NFP,high
+2021-10-12,CPI (estimado),high
+2021-11-03,FOMC,high
+2021-11-05,NFP,high
+2021-11-12,CPI (estimado),high
+2021-12-03,NFP,high
+2021-12-12,CPI (estimado),high
+2021-12-15,FOMC,high
+2022-01-07,NFP,high
+2022-01-12,CPI (estimado),high
+2022-01-26,FOMC,high
+2022-02-04,NFP,high
+2022-02-12,CPI (estimado),high
+2022-03-04,NFP,high
+2022-03-12,CPI (estimado),high
+2022-03-16,FOMC,high
+2022-04-01,NFP,high
+2022-04-12,CPI (estimado),high
+2022-05-04,FOMC,high
+2022-05-06,NFP,high
+2022-05-12,CPI (estimado),high
+2022-06-03,NFP,high
+2022-06-12,CPI (estimado),high
+2022-06-15,FOMC,high
+2022-07-01,NFP,high
+2022-07-12,CPI (estimado),high
+2022-07-27,FOMC,high
+2022-08-05,NFP,high
+2022-08-12,CPI (estimado),high
+2022-09-02,NFP,high
+2022-09-12,CPI (estimado),high
+2022-09-21,FOMC,high
+2022-10-07,NFP,high
+2022-10-12,CPI (estimado),high
+2022-11-02,FOMC,high
+2022-11-04,NFP,high
+2022-11-12,CPI (estimado),high
+2022-12-02,NFP,high
+2022-12-12,CPI (estimado),high
+2022-12-14,FOMC,high
+2023-01-06,NFP,high
+2023-01-12,CPI (estimado),high
+2023-02-01,FOMC,high
+2023-02-03,NFP,high
+2023-02-12,CPI (estimado),high
+2023-03-03,NFP,high
+2023-03-12,CPI (estimado),high
+2023-03-22,FOMC,high
+2023-04-07,NFP,high
+2023-04-12,CPI (estimado),high
+2023-05-03,FOMC,high
+2023-05-05,NFP,high
+2023-05-12,CPI (estimado),high
+2023-06-02,NFP,high
+2023-06-12,CPI (estimado),high
+2023-06-14,FOMC,high
+2023-07-07,NFP,high
+2023-07-12,CPI (estimado),high
+2023-07-26,FOMC,high
+2023-08-04,NFP,high
+2023-08-12,CPI (estimado),high
+2023-09-01,NFP,high
+2023-09-12,CPI (estimado),high
+2023-09-20,FOMC,high
+2023-10-06,NFP,high
+2023-10-12,CPI (estimado),high
+2023-11-01,FOMC,high
+2023-11-03,NFP,high
+2023-11-12,CPI (estimado),high
+2023-12-01,NFP,high
+2023-12-12,CPI (estimado),high
+2023-12-13,FOMC,high
+2024-01-05,NFP,high
+2024-01-12,CPI (estimado),high
+2024-01-31,FOMC,high
+2024-02-02,NFP,high
+2024-02-12,CPI (estimado),high
+2024-03-01,NFP,high
+2024-03-12,CPI (estimado),high
+2024-03-20,FOMC,high
+2024-04-05,NFP,high
+2024-04-12,CPI (estimado),high
+2024-05-01,FOMC,high
+2024-05-03,NFP,high
+2024-05-12,CPI (estimado),high
+2024-06-07,NFP,high
+2024-06-12,CPI (estimado),high
+2024-06-12,FOMC,high
+2024-07-05,NFP,high
+2024-07-12,CPI (estimado),high
+2024-07-31,FOMC,high
+2024-08-02,NFP,high
+2024-08-12,CPI (estimado),high
+2024-09-06,NFP,high
+2024-09-12,CPI (estimado),high
+2024-09-18,FOMC,high
+2024-10-04,NFP,high
+2024-10-12,CPI (estimado),high
+2024-11-01,NFP,high
+2024-11-07,FOMC,high
+2024-11-12,CPI (estimado),high
+2024-12-06,NFP,high
+2024-12-12,CPI (estimado),high
+2024-12-18,FOMC,high
+2025-01-03,NFP,high
+2025-01-12,CPI (estimado),high
+2025-01-29,FOMC,high
+2025-02-07,NFP,high
+2025-02-12,CPI (estimado),high
+2025-03-07,NFP,high
+2025-03-12,CPI (estimado),high
+2025-03-19,FOMC,high
+2025-04-04,NFP,high
+2025-04-12,CPI (estimado),high
+2025-05-02,NFP,high
+2025-05-07,FOMC,high
+2025-05-12,CPI (estimado),high
+2025-06-06,NFP,high
+2025-06-12,CPI (estimado),high
+2025-06-18,FOMC,high
+2025-07-04,NFP,high
+2025-07-12,CPI (estimado),high
+2025-07-30,FOMC,high
+2025-08-01,NFP,high
+2025-08-12,CPI (estimado),high
+2025-09-05,NFP,high
+2025-09-12,CPI (estimado),high
+2025-09-17,FOMC,high
+2025-10-03,NFP,high
+2025-10-12,CPI (estimado),high
+2025-10-29,FOMC,high
+2025-11-07,NFP,high
+2025-11-12,CPI (estimado),high
+2025-12-05,NFP,high
+2025-12-10,FOMC,high
+2025-12-12,CPI (estimado),high
+2026-01-02,NFP,high
+2026-01-12,CPI (estimado),high
+2026-01-28,FOMC,high
+2026-02-06,NFP,high
+2026-02-12,CPI (estimado),high
+2026-03-06,NFP,high
+2026-03-12,CPI (estimado),high
+2026-03-18,FOMC,high
+2026-04-03,NFP,high
+2026-04-12,CPI (estimado),high
+2026-04-29,FOMC,high
+2026-05-01,NFP,high
+2026-05-12,CPI (estimado),high
+2026-06-05,NFP,high
+2026-06-12,CPI (estimado),high
+2026-06-17,FOMC,high
+2026-07-03,NFP,high
+2026-07-12,CPI (estimado),high
+2026-07-29,FOMC,high
+2026-08-07,NFP,high
+2026-08-12,CPI (estimado),high
+2026-09-04,NFP,high
+2026-09-12,CPI (estimado),high
+2026-09-16,FOMC,high
+2026-10-02,NFP,high
+2026-10-12,CPI (estimado),high
+2026-10-28,FOMC,high
+2026-11-06,NFP,high
+2026-11-12,CPI (estimado),high
+2026-12-04,NFP,high
+2026-12-09,FOMC,high
+2026-12-12,CPI (estimado),high

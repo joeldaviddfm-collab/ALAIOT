@@ -1,0 +1,9 @@
+# ============================================================
+# EXTRAS OPCIONALES (no obligatorios): sentimiento con FinBERT.
+# Si no se instalan, src/data/sentiment.py usa un lexicón
+# financiero propio (fallback deterministic y documentado).
+#   pip install -r requirements-ml.txt
+# ============================================================
+transformers==4.46.3
+torch==2.5.1
+sentencepiece==0.2.0
