@@ -120,3 +120,11 @@ go_no_go:
 alerts:
   telegram_token_env: TELEGRAM_TOKEN
   telegram_chat_id_env: TELEGRAM_CHAT_ID
+  discord_webhook_env: DISCORD_WEBHOOK_URL
+  notify_channels_env: QSE_NOTIFY_CHANNELS   # ej: "telegram,discord" (vacío = todos los configurados)
+  smtp_host_env: SMTP_HOST
+  smtp_port_env: SMTP_PORT
+  smtp_user_env: SMTP_USER
+  smtp_pass_env: SMTP_PASS
+  email_from_env: EMAIL_FROM
+  email_to_env: EMAIL_TO

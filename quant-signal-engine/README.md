@@ -139,14 +139,35 @@ nunca rellenamos con suposiciones.**
   entry_ref, stop, tp, size, top1, top2, top3 (SHAP), reason, data_mode`
 - `signals/history.csv`: registro acumulado (idempotente por `date+asset`).
 - `python -m src.signals.evaluator`: compara señales pasadas contra resultados reales y
-  calcula la **precisión en vivo** global y por umbral de confianza.
+  calcula la **precisión en vivo** global y por umbral de confianza
+  (`reports/live_accuracy.csv`, `live_accuracy_by_threshold.csv`, `live_accuracy.json`).
 - `report.md`, `go_no_go.md`, `reports/` (curva de equity, drawdown, precisión por umbral,
   métricas por activo y por régimen, `metrics.json`, `alerts.log`).
-- **`reports/dashboard.html`**: dashboard visual **auto-contenido** (un solo archivo HTML con
-  CSS y gráficos incrustados, sin servidor ni dependencias externas). Se abre con doble clic en
-  el navegador (`file://`) y se ve como una web: KPIs out-of-sample, señales de hoy, compuerta
-  GO/NO-GO, gráficos, alertas y el informe completo. Se regenera solo tras cada backtest y en el
-  workflow diario (`python scripts/build_dashboard.py`).
+- **`reports/dashboard.html`**: dashboard **profesional y auto-contenido** (un solo archivo HTML
+  con CSS y gráficos incrustados en base64, sin servidor ni dependencias externas). Se abre con
+  doble clic en el navegador (`file://`) o sirviéndolo estáticamente (Netlify/Pages/http.server):
+  banner de veredicto GO/NO-GO, KPIs out-of-sample con sus umbrales, **señales de hoy al lado de
+  la acertabilidad en vivo medida contra resultados reales**, checklist de qué falta para ser APTO,
+  gráficos, alertas e informe completo. Se regenera solo tras cada backtest y en el workflow diario
+  (`python scripts/build_dashboard.py`).
+
+## 7b. Notificaciones de señales (Telegram / Discord / email)
+
+El propio motor te manda las señales del día **junto con la precisión en vivo honesta** por el canal
+que configures en `.env` (ver `.env.example`); en GitHub Actions se leen de los secrets del repo:
+
+| Canal | Variables de entorno |
+|---|---|
+| Telegram | `TELEGRAM_TOKEN`, `TELEGRAM_CHAT_ID` |
+| Discord | `DISCORD_WEBHOOK_URL` |
+| Email (SMTP) | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `EMAIL_FROM`, `EMAIL_TO` |
+| Elegir canales | `QSE_NOTIFY_CHANNELS=telegram,discord` (vacío = todos los configurados) |
+
+Sin ninguna variable configurada es no-op. Un fallo de red/credenciales **nunca** rompe el pipeline
+(fail-safe: queda en `alerts.log`). El mensaje incluye cada señal (dirección, prob, meta, entry/SL/TP,
+tamaño, top-3 SHAP), cuántas salieron `nada`, la **precisión en vivo acumulada** (global, por umbral y
+Brier) y el disclaimer. En `daily_signals.yml` cada corrida diaria envía la notificación
+automáticamente.
 
 ## 8. Automatización (GitHub Actions)
 

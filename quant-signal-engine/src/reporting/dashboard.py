@@ -1,9 +1,10 @@
 """Dashboard estático auto-contenido: reports/dashboard.html.
 
-Se VE como una web (tema oscuro, KPIs, gráficos, tablas) pero NO es una web:
-es un único archivo HTML con todo incrustado (CSS inline + imágenes en base64),
-sin servidor, sin CDN y sin dependencias externas => funciona abriéndolo con
-doble clic (file://) o sirviéndolo con cualquier servidor estático.
+Se VE como una web profesional (tema oscuro, banner de veredicto, KPIs, tablas,
+gráficos) pero NO es una web: es un único archivo HTML con todo incrustado
+(CSS inline + imágenes en base64), sin servidor, sin CDN y sin dependencias
+externas => funciona abriéndolo con doble clic (file://) o sirviéndolo con
+cualquier servidor estático (python -m http.server, Netlify, GitHub Pages...).
 """
 
 from __future__ import annotations
@@ -17,41 +18,77 @@ from pathlib import Path
 import pandas as pd
 
 CSS = """
-:root{--bg:#0b0e14;--panel:#121826;--panel2:#0f1420;--line:#1e2a44;--txt:#dbe4ff;--dim:#8b98b8;
---acc:#4f8cff;--ok:#2ecc71;--bad:#ff5c5c;--warn:#f1c40f;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+:root{--bg:#070b12;--bg2:#0b101b;--panel:#101828;--panel2:#0d1420;--line:#1f2c47;--txt:#e6edf7;--dim:#8fa3c4;
+--acc:#5b8cff;--acc2:#22d3ee;--ok:#34d399;--bad:#f87171;--warn:#fbbf24;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--txt);font:15px/1.5 -apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
-header{position:sticky;top:0;z-index:10;background:rgba(11,14,20,.92);backdrop-filter:blur(6px);
-border-bottom:1px solid var(--line);padding:14px 22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-header h1{font-size:18px;margin:0;letter-spacing:.3px}
-header .sub{color:var(--dim);font-size:12.5px;width:100%}
-.badge{display:inline-block;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid var(--line);background:var(--panel)}
-.badge.ok{color:var(--ok);border-color:var(--ok)} .badge.bad{color:var(--bad);border-color:var(--bad)}
-.badge.warn{color:var(--warn);border-color:var(--warn)} .badge.acc{color:var(--acc);border-color:var(--acc)}
-main{max-width:1180px;margin:0 auto;padding:22px}
-.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-.card .k{color:var(--dim);font-size:11.5px;text-transform:uppercase;letter-spacing:.6px}
-.card .v{font:600 22px/1.2 var(--mono);margin-top:4px}
-.card .v.ok{color:var(--ok)} .card .v.bad{color:var(--bad)} .card .v.warn{color:var(--warn)}
-section{margin-top:26px}
-h2{font-size:16px;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
-h2 .n{color:var(--acc);font-family:var(--mono);margin-right:8px}
-table{border-collapse:collapse;width:100%;font-size:13px;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-th{background:var(--panel2);text-align:left;padding:8px 10px;color:var(--dim);font-size:11.5px;text-transform:uppercase;letter-spacing:.5px}
-td{padding:7px 10px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12.5px}
-tr:hover td{background:#16203a}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(1200px 500px at 70% -10%,#12203a 0%,var(--bg) 55%);color:var(--txt);
+font:15px/1.55 -apple-system,'Segoe UI',Inter,Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+header{position:sticky;top:0;z-index:20;background:rgba(7,11,18,.85);backdrop-filter:blur(10px);
+border-bottom:1px solid var(--line);padding:0}
+.hbar{max-width:1200px;margin:0 auto;padding:14px 22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px;letter-spacing:.4px}
+.logo .bolt{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:9px;
+background:linear-gradient(135deg,var(--acc),var(--acc2));color:#04101f;font-size:17px;box-shadow:0 4px 14px rgba(91,140,255,.35)}
+.logo small{display:block;font-weight:600;font-size:10.5px;color:var(--dim);letter-spacing:1.6px;text-transform:uppercase}
+.spacer{flex:1}
+.badge{display:inline-block;padding:4px 11px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid var(--line);background:var(--panel);white-space:nowrap}
+.badge.ok{color:var(--ok);border-color:rgba(52,211,153,.5);background:rgba(52,211,153,.08)}
+.badge.bad{color:var(--bad);border-color:rgba(248,113,113,.5);background:rgba(248,113,113,.08)}
+.badge.warn{color:var(--warn);border-color:rgba(251,191,36,.5);background:rgba(251,191,36,.08)}
+.badge.acc{color:var(--acc);border-color:rgba(91,140,255,.5);background:rgba(91,140,255,.08)}
+.badge.dim{color:var(--dim)}
+.banner{border-top:1px solid var(--line);background:linear-gradient(90deg,rgba(248,113,113,.14),rgba(248,113,113,.05))}
+.banner.go{background:linear-gradient(90deg,rgba(52,211,153,.16),rgba(52,211,153,.05))}
+.banner .inner{max-width:1200px;margin:0 auto;padding:12px 22px;display:flex;flex-wrap:wrap;gap:8px 18px;align-items:baseline}
+.banner .verdict{font-size:20px;font-weight:800;letter-spacing:.3px}
+.banner.bad .verdict{color:var(--bad)} .banner.go .verdict{color:var(--ok)}
+.banner .meta{color:var(--dim);font-size:12.5px}
+main{max-width:1200px;margin:0 auto;padding:24px 22px}
+section{margin-top:30px}
+h2{font-size:15px;margin:0 0 14px;display:flex;align-items:center;gap:10px;letter-spacing:.4px;text-transform:uppercase}
+h2 .n{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:26px;padding:0 7px;border-radius:8px;
+background:linear-gradient(135deg,var(--acc),var(--acc2));color:#04101f;font:700 12.5px var(--mono)}
+h2 .hint{margin-left:auto;font-size:11.5px;color:var(--dim);text-transform:none;letter-spacing:0;font-weight:500}
+.grid{display:grid;gap:13px;grid-template-columns:repeat(auto-fit,minmax(165px,1fr))}
+.card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:14px;
+padding:14px 16px;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-2px);border-color:#2c3d63}
+.card .k{color:var(--dim);font-size:10.5px;text-transform:uppercase;letter-spacing:.9px;font-weight:700}
+.card .v{font:600 22px/1.25 var(--mono);margin-top:5px}
+.card .s{font-size:11px;color:var(--dim);margin-top:2px}
+.v.ok{color:var(--ok)} .v.bad{color:var(--bad)} .v.warn{color:var(--warn)} .v.acc{color:var(--acc)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+thead th{position:sticky;top:0;background:#0e1626;text-align:left;padding:9px 12px;color:var(--dim);font-size:10.5px;
+text-transform:uppercase;letter-spacing:.7px;white-space:nowrap;border-bottom:1px solid var(--line)}
+tbody td{padding:8px 12px;border-top:1px solid var(--line);font-family:var(--mono);font-size:12.5px;white-space:nowrap}
+tbody tr:hover td{background:#15203a}
+td.num,th.num{text-align:right}
 .dir-long{color:var(--ok);font-weight:700}.dir-short{color:var(--bad);font-weight:700}.dir-nada{color:var(--dim)}
-.charts{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
-.charts img{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff}
-pre{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;overflow:auto;font:12px var(--mono);color:var(--dim);max-height:280px}
-details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-top:12px}
-summary{cursor:pointer;font-weight:600;color:var(--acc)}
-.report h1{font-size:20px}.report h2{font-size:16px}.report h3{font-size:14px;color:var(--acc)}
-.report blockquote{border-left:3px solid var(--warn);margin:10px 0;padding:6px 12px;background:var(--panel);border-radius:0 10px 10px 0}
-.report table{margin:10px 0}.report code{background:var(--panel2);padding:1px 5px;border-radius:6px;font-family:var(--mono)}
-footer{color:var(--dim);font-size:12px;text-align:center;padding:26px 0 40px;border-top:1px solid var(--line);margin-top:34px}
-.two{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(360px,1fr))}
+.chip{display:inline-block;padding:3px 9px;margin:2px 4px 2px 0;border-radius:8px;font-size:11.5px;border:1px solid var(--line);background:var(--panel2)}
+.chip.bad{color:var(--bad);border-color:rgba(248,113,113,.4)}
+.chip.ok{color:var(--ok);border-color:rgba(52,211,153,.4)}
+.two{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(380px,1fr))}
+.panel{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:16px;padding:18px}
+.panel h3{margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:1px;color:var(--dim)}
+.bignum{font:700 40px/1 var(--mono)}
+.bignum.ok{color:var(--ok)} .bignum.bad{color:var(--bad)} .bignum.warn{color:var(--warn)}
+.sub{color:var(--dim);font-size:12.5px;margin-top:6px}
+.charts{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(360px,1fr))}
+.charts figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:12px}
+.charts img{width:100%;border-radius:9px;background:#fff;display:block}
+.charts figcaption{color:var(--dim);font-size:12px;margin-top:8px}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;overflow:auto;
+font:12px var(--mono);color:var(--dim);max-height:300px}
+.report h1{font-size:21px}.report h2{font-size:16px;text-transform:none;letter-spacing:0}
+.report h3{font-size:14px;color:var(--acc)}
+.report blockquote{border-left:3px solid var(--warn);margin:10px 0;padding:8px 14px;background:var(--panel);border-radius:0 10px 10px 0}
+.report table{margin:10px 0;border:1px solid var(--line);border-radius:10px}
+.report code{background:var(--panel2);padding:1px 6px;border-radius:6px;font-family:var(--mono)}
+.report p{margin:8px 0}
+footer{color:var(--dim);font-size:12px;text-align:center;padding:28px 20px 44px;border-top:1px solid var(--line);margin-top:40px;line-height:1.7}
+@media print{header{position:static}.card:hover{transform:none}}
 """
 
 
@@ -63,10 +100,10 @@ def _img_b64(path: Path) -> str:
     return "data:image/png;base64," + base64.b64encode(path.read_bytes()).decode()
 
 
-def _df_table(df: pd.DataFrame, *, cls: str = "") -> str:
+def _df_table(df: pd.DataFrame, *, num_cols: tuple[str, ...] = ()) -> str:
     if df is None or df.empty:
-        return "<p style='color:var(--dim)'>Sin datos.</p>"
-    head = "".join(f"<th>{_esc(c)}</th>" for c in df.columns)
+        return "<p class='sub'>Sin datos todavía.</p>"
+    head = "".join(f"<th class='{'num' if c in num_cols else ''}'>{_esc(c)}</th>" for c in df.columns)
     rows = []
     for _, r in df.iterrows():
         tds = []
@@ -77,12 +114,11 @@ def _df_table(df: pd.DataFrame, *, cls: str = "") -> str:
                 d = str(v).lower()
                 cell = f"<span class='dir-{d}'>{_esc(v)}</span>"
             elif c in ("¿Cumple?", "ok") and str(v) in ("✅", "❌", "True", "False"):
-                cell = (
-                    f"<span class='{'dir-long' if str(v) in ('✅','True') else 'dir-short'}'>{_esc(v)}</span>"
-                )
-            tds.append(f"<td>{cell}</td>")
+                good = str(v) in ("✅", "True")
+                cell = f"<span class='{'dir-long' if good else 'dir-short'}'>{_esc(v)}</span>"
+            tds.append(f"<td class='{'num' if c in num_cols else ''}'>{cell}</td>")
         rows.append("<tr>" + "".join(tds) + "</tr>")
-    return f"<table class='{cls}'><thead><tr>{head}</tr></thead><tbody>{''.join(rows)}</tbody></table>"
+    return f"<div class='tablewrap'><table><thead><tr>{head}</tr></thead><tbody>{''.join(rows)}</tbody></table></div>"
 
 
 def _inline(text: str) -> str:
@@ -178,14 +214,16 @@ def _parse_go_no_go(path: Path) -> tuple[str, pd.DataFrame]:
             cells = [c.strip() for c in line.strip().strip("|").split("|")]
             if len(cells) == 4:
                 rows.append(cells)
-    return verdict, pd.DataFrame(
-        rows, columns=["Criterio", "Umbral", "Medido", "¿Cumple?"]
-    ) if rows else pd.DataFrame()
+    df = pd.DataFrame(rows, columns=["Criterio", "Umbral", "Medido", "¿Cumple?"]) if rows else pd.DataFrame()
+    return verdict, df
 
 
-def _kpi(label: str, value, cls: str = "") -> str:
+def _kpi(label: str, value, cls: str = "", sub: str = "") -> str:
     return (
-        f"<div class='card'><div class='k'>{_esc(label)}</div><div class='v {cls}'>{_esc(value)}</div></div>"
+        f"<div class='card'><div class='k'>{_esc(label)}</div>"
+        f"<div class='v {cls}'>{_esc(value)}</div>"
+        + (f"<div class='s'>{_esc(sub)}</div>" if sub else "")
+        + "</div>"
     )
 
 
@@ -199,6 +237,50 @@ def _fmt(x, pct=False):
     if xf != xf or xf in (float("inf"), float("-inf")):
         return "inf" if xf > 0 else "n/a"
     return f"{xf:.2%}" if pct else f"{xf:.3f}"
+
+
+def _live_accuracy_panel(acc: dict | None) -> str:
+    """Panel de acertabilidad en vivo (paper) medida contra resultados reales."""
+    if not acc or int(acc.get("n_evaluated", 0)) <= 0:
+        return (
+            "<div class='panel'><h3>Precisión en vivo (paper)</h3>"
+            "<p class='sub'>Aún no hay señales evaluables: la acertabilidad se calcula contra los resultados "
+            "reales de cada operación paper (<code>python -m src.signals.evaluator</code>). "
+            "Aquí se mostrará SIEMPRE la cifra honesta, sin redondeos favorables.</p></div>"
+        )
+    a = float(acc["accuracy"])
+    cls = "ok" if a >= 0.70 else ("warn" if a >= 0.55 else "bad")
+    thr_rows = "".join(
+        f"<span class='chip'>{_esc(r['bucket'])}: <b>{float(r['accuracy']):.0%}</b> (n={r['n']})</span>"
+        for r in acc.get("by_threshold", [])
+    )
+    return (
+        f"<div class='panel'><h3>Precisión en vivo (paper) — medida contra resultados reales</h3>"
+        f"<div class='bignum {cls}'>{a:.1%}</div>"
+        f"<div class='sub'>aciertos sobre <b>{acc['n_evaluated']}</b> señales evaluadas · "
+        f"Brier {float(acc.get('brier', 0)):.3f} · prob media {float(acc.get('mean_prob', 0)):.2f} · "
+        f"datos: {acc.get('data_mode', 'real')}</div>"
+        f"<div style='margin-top:10px'>{thr_rows}</div></div>"
+    )
+
+
+def _go_checklist(gonogo_df: pd.DataFrame) -> str:
+    """Chips con lo que FALTA para que el veredicto sea APTO (honesto, sin forzar)."""
+    if gonogo_df.empty:
+        return ""
+    failing = gonogo_df[gonogo_df["¿Cumple?"].astype(str).isin(("❌", "False"))]
+    if failing.empty:
+        return "<div class='panel'><h3>Requisitos GO</h3><span class='chip ok'>✅ Todos los criterios cumplidos</span></div>"
+    chips = "".join(
+        f"<span class='chip bad'>❌ {_esc(r['Criterio'])}: medido {_esc(r['Medido'])} (mín {_esc(r['Umbral'])})</span>"
+        for _, r in failing.iterrows()
+    )
+    return (
+        "<div class='panel'><h3>Qué falta para ser APTO PARA CAPITAL REAL</h3>"
+        "<div>" + chips + "</div>"
+        "<p class='sub'>El veredicto lo decide la compuerta con datos out-of-sample REALES (test ciego + ≥90 días "
+        "de paper). No se fuerza: si los números no llegan, seguirá diciendo NO APTO.</p></div>"
+    )
 
 
 def build_dashboard(cfg) -> Path:
@@ -218,52 +300,72 @@ def build_dashboard(cfg) -> Path:
     data_mode = metrics.get("data_mode", "real")
 
     verdict, gonogo_df = _parse_go_no_go(root / "go_no_go.md")
-    vcls = "ok" if "APTO" in verdict and "NO APTO" not in verdict else "bad"
+    is_go = "APTO" in verdict and "NO APTO" not in verdict
     mode_cls = "warn" if data_mode == "synthetic" else "acc"
+
+    acc_json = None
+    la = reports / "live_accuracy.json"
+    if la.exists():
+        try:
+            acc_json = json.loads(la.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001
+            acc_json = None
 
     # KPIs
     kpis = "".join(
         [
-            _kpi("Veredicto GO/NO-GO", verdict, vcls),
             _kpi(
-                "Modo de datos",
-                data_mode.upper() + (" (SINTÉTICO)" if data_mode == "synthetic" else ""),
-                mode_cls,
-            ),
-            _kpi(
-                "Sharpe OOS (ciego)",
+                "Sharpe OOS (test ciego)",
                 _fmt(blind.get("sharpe")),
                 "ok" if (blind.get("sharpe") or 0) > 1 else "bad",
+                "mínimo 1.0",
             ),
             _kpi(
                 "Win rate OOS",
                 _fmt(blind.get("win_rate"), pct=True),
-                "ok" if (blind.get("win_rate") or 0) >= 0.7 else "warn",
+                "ok" if (blind.get("win_rate") or 0) >= 0.70 else "warn",
+                "objetivo ≥70%",
             ),
-            _kpi("Profit factor", _fmt(blind.get("profit_factor"))),
+            _kpi(
+                "Profit factor",
+                _fmt(blind.get("profit_factor")),
+                "ok" if (blind.get("profit_factor") or 0) > 1.3 else "bad",
+                "mínimo 1.3",
+            ),
             _kpi(
                 "Max drawdown",
                 _fmt(blind.get("max_drawdown"), pct=True),
                 "ok" if abs(blind.get("max_drawdown") or 0) < 0.15 else "bad",
+                "límite 15%",
             ),
             _kpi(
                 "Operaciones OOS",
                 blind.get("n_trades", 0),
                 "ok" if (blind.get("n_trades") or 0) >= 100 else "bad",
+                "mínimo 100",
             ),
-            _kpi("PBO (CSCV)", _fmt(rob.get("pbo")), "ok" if (rob.get("pbo") or 1) < 0.5 else "bad"),
             _kpi(
-                "p-value Deflated Sharpe",
+                "PBO (CSCV)", _fmt(rob.get("pbo")), "ok" if (rob.get("pbo") or 1) < 0.5 else "bad", "máx 0.5"
+            ),
+            _kpi(
+                "p-val Deflated Sharpe",
                 _fmt(rob.get("deflated_p")),
                 "ok" if (rob.get("deflated_p") or 1) < 0.05 else "bad",
+                "máx 0.05",
             ),
             _kpi(
-                "Prob. de ruina (MC)",
+                "Prob. ruina (MC)",
                 _fmt(mc.get("p_ruin"), pct=True),
                 "ok" if (mc.get("p_ruin") or 1) < 0.01 else "bad",
+                "máx 1%",
             ),
-            _kpi("Leakage AUC (≈0.5 esperado)", _fmt(rob.get("leakage_auc"))),
-            _kpi("Configs probadas", rob.get("n_configs", 1)),
+            _kpi(
+                "Leakage AUC",
+                _fmt(rob.get("leakage_auc")),
+                "ok" if abs((rob.get("leakage_auc") or 0.5) - 0.5) < 0.05 else "warn",
+                "≈0.5 = sin fuga",
+            ),
+            _kpi("Configs probadas", rob.get("n_configs", 1), "", "penalizadas en DSR"),
         ]
     )
 
@@ -273,65 +375,118 @@ def build_dashboard(cfg) -> Path:
     if lpath.exists():
         latest = pd.read_csv(lpath)
     n_sig = int((latest["direction"] != "nada").sum()) if not latest.empty else 0
+    sig_cols = [
+        c
+        for c in (
+            "date",
+            "asset",
+            "direction",
+            "prob",
+            "meta_prob",
+            "agreement",
+            "entry_ref",
+            "stop",
+            "tp",
+            "size",
+            "top1",
+            "top2",
+            "top3",
+            "reason",
+            "data_mode",
+        )
+        if c in latest.columns
+    ]
+    sig_table = (
+        _df_table(
+            latest[sig_cols] if sig_cols else latest,
+            num_cols=("prob", "meta_prob", "agreement", "entry_ref", "stop", "tp", "size"),
+        )
+        if not latest.empty
+        else "<p class='sub'>Ejecuta <code>python -m src.run --mode paper</code> para generar señales.</p>"
+    )
 
     # gráficos
     charts_html = ""
     for name, caption in (
-        ("equity_curve.png", "Curva de equity"),
+        ("equity_curve.png", "Curva de equity (walk-forward OOS)"),
         ("drawdown.png", "Drawdown"),
         ("accuracy_by_threshold.png", "Precisión por umbral de confianza"),
     ):
         p = reports / name
         if p.exists():
-            charts_html += f"<figure style='margin:0'><img src='{_img_b64(p)}' alt='{caption}'><figcaption style='color:var(--dim);font-size:12px;margin-top:6px'>{caption}</figcaption></figure>"
+            charts_html += f"<figure><img src='{_img_b64(p)}' alt='{caption}'><figcaption>{caption}</figcaption></figure>"
 
     # alertas recientes
-    alerts_html = "<p style='color:var(--dim)'>Sin alertas registradas.</p>"
+    alerts_html = "<p class='sub'>Sin alertas registradas.</p>"
     alog = reports / "alerts.log"
     if alog.exists():
         tail = alog.read_text(encoding="utf-8").splitlines()[-40:]
         alerts_html = "<pre>" + _esc("\n".join(tail)) + "</pre>"
 
     # informe completo (report.md → HTML)
-    report_html = "<p style='color:var(--dim)'>Ejecuta <code>python -m src.backtest --walk-forward --report</code> para generar el informe.</p>"
+    report_html = "<p class='sub'>Ejecuta <code>python -m src.backtest --walk-forward --report</code> para generar el informe.</p>"
     rpath = root / "report.md"
     if rpath.exists():
         report_html = f"<div class='report'>{md_to_html(rpath.read_text(encoding='utf-8'))}</div>"
 
-    # precisión en vivo por umbral (si existe)
-    acc_live = reports / "live_accuracy_by_threshold.csv"
-    acc_live_html = ""
-    if acc_live.exists():
-        acc_live_html = "<h2><span class='n'>§</span>Precisión en vivo (paper) por umbral</h2>" + _df_table(
-            pd.read_csv(acc_live)
+    # precisión por umbral del backtest (si existe)
+    acc_bt = reports / "live_accuracy_by_threshold.csv"
+    acc_bt_html = ""
+    if acc_bt.exists():
+        acc_bt_html = (
+            "<h2><span class='n'>05</span>Precisión por umbral (backtest OOS)<span class='hint'>reports/live_accuracy_by_threshold.csv</span></h2>"
+            + _df_table(pd.read_csv(acc_bt))
         )
 
-    now = pd.Timestamp.now().strftime("%Y-%m-%d %H:%M UTC")
+    now = pd.Timestamp.now().strftime("%Y-%m-%d %H:%M")
     doc = f"""<!DOCTYPE html>
 <html lang="es"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>quant-signal-engine — dashboard (PAPER)</title>
+<title>quant-signal-engine — Dashboard (PAPER TRADING)</title>
 <style>{CSS}</style></head>
 <body>
 <header>
-  <h1>⚡ quant-signal-engine</h1>
-  <span class="badge {vcls}">Veredicto: {_esc(verdict)}</span>
-  <span class="badge {mode_cls}">Datos: {_esc(data_mode)}{' ⚠️ sintéticos' if data_mode=='synthetic' else ''}</span>
-  <span class="badge acc">MODO PAPER TRADING</span>
-  <span class="badge">Señales activas hoy: {n_sig}</span>
-  <span class="badge">Generado: {now}</span>
-  <div class="sub">Dashboard estático auto-contenido (un solo archivo HTML, sin servidor). Esto no es asesoría financiera ni garantiza rentabilidad.</div>
+  <div class="hbar">
+    <div class="logo"><span class="bolt">⚡</span><span>quant-signal-engine<small>señales diarias · solo paper trading</small></span></div>
+    <div class="spacer"></div>
+    <span class="badge acc">MODO PAPER</span>
+    <span class="badge {mode_cls}">DATOS: {_esc(data_mode.upper())}{' ⚠ sintéticos' if data_mode == 'synthetic' else ''}</span>
+    <span class="badge dim">señales hoy: {n_sig}</span>
+    <span class="badge dim">{now}</span>
+  </div>
+  <div class="banner {'go' if is_go else 'bad'}"><div class="inner">
+    <span class="verdict">Veredicto GO/NO-GO: {_esc(verdict)}</span>
+    <span class="meta">decidido por la compuerta con datos out-of-sample · test ciego intocable · generado {now}</span>
+  </div></div>
 </header>
 <main>
-<section><h2><span class="n">01</span>KPIs out-of-sample (test ciego)</h2><div class="grid">{kpis}</div></section>
-<section><h2><span class="n">02</span>Señales de hoy (signals/latest.csv)</h2>{_df_table(latest)}</section>
-<section><h2><span class="n">03</span>Compuerta GO / NO-GO</h2>{_df_table(gonogo_df)}</section>
-<section><h2><span class="n">04</span>Gráficos</h2><div class="charts">{charts_html or '<p style="color:var(--dim)">Sin gráficos todavía.</p>'}</div></section>
-{acc_live_html}
-<section><h2><span class="n">05</span>Alertas recientes (reports/alerts.log)</h2>{alerts_html}</section>
-<section><h2><span class="n">06</span>Informe completo (report.md)</h2>{report_html}</section>
+<section><h2><span class="n">01</span>KPIs out-of-sample (test ciego)<span class="hint">umbrales mínimos entre paréntesis</span></h2>
+<div class="grid">{kpis}</div></section>
+
+<section><h2><span class="n">02</span>Señales de hoy + acertabilidad en vivo<span class="hint">signals/latest.csv · precisión medida contra resultados reales</span></h2>
+<div class="two">
+  <div><h3 style="color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin:0 0 8px">Señales (PAPER)</h3>{sig_table}</div>
+  {_live_accuracy_panel(acc_json)}
+</div></section>
+
+<section><h2><span class="n">03</span>Compuerta GO / NO-GO</h2>
+<div class="two">
+  <div>{_df_table(gonogo_df)}</div>
+  {_go_checklist(gonogo_df)}
+</div></section>
+
+<section><h2><span class="n">04</span>Gráficos</h2>
+<div class="charts">{charts_html or "<p class='sub'>Sin gráficos todavía: ejecuta el backtest con --report.</p>"}</div></section>
+
+{acc_bt_html}
+
+<section><h2><span class="n">06</span>Alertas recientes<span class="hint">reports/alerts.log</span></h2>{alerts_html}</section>
+
+<section><h2><span class="n">07</span>Informe completo<span class="hint">report.md</span></h2>{report_html}</section>
 </main>
-<footer>quant-signal-engine · solo PAPER TRADING · esto no es asesoría financiera ni garantiza rentabilidad · archivo estático generado automáticamente</footer>
+<footer>⚡ quant-signal-engine · SOLO PAPER TRADING (no envía órdenes reales)<br>
+Esto no es asesoría financiera ni garantiza rentabilidad.<br>
+Dashboard estático auto-contenido generado automáticamente — ábrelo con doble clic, sin servidor.</footer>
 </body></html>"""
     out_path.write_text(doc, encoding="utf-8")
     return out_path

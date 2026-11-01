@@ -78,6 +78,19 @@ def test_build_dashboard_self_contained(cfg):
     (cfg.reports_dir / "alerts.log").write_text(
         "[2026-11-01T10:00:00+00:00] WARNING: demo\n", encoding="utf-8"
     )
+    (cfg.reports_dir / "live_accuracy.json").write_text(
+        json.dumps(
+            {
+                "data_mode": "real",
+                "n_evaluated": 25,
+                "accuracy": 0.72,
+                "brier": 0.19,
+                "mean_prob": 0.78,
+                "by_threshold": [{"bucket": "0.70-0.75", "n": 10, "accuracy": 0.7}],
+            }
+        ),
+        encoding="utf-8",
+    )
 
     path = build_dashboard(cfg)
     text = path.read_text(encoding="utf-8")
@@ -87,6 +100,10 @@ def test_build_dashboard_self_contained(cfg):
     assert 'src="http' not in text and 'href="http' not in text.replace('href="https://github.com', "")
     assert "NO APTO" in text and "BTC-USD" in text and "dir-long" in text
     assert "Profit factor" in text and "✅" in text and "❌" in text
+    # panel de acertabilidad en vivo junto a las señales + checklist GO
+    assert "Precisión en vivo" in text and "72.0%" in text and "Brier" in text
+    assert "Qué falta para ser APTO" in text
+    assert "banner" in text and "logo" in text  # diseño profesional
     import re
 
     srcs = re.findall(r"<img src='([^']+)'", text)

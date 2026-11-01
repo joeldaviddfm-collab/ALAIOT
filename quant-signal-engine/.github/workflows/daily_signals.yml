@@ -26,6 +26,7 @@ jobs:
           GLASSNODE_API_KEY: ${{ secrets.GLASSNODE_API_KEY }}
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
       - name: Evaluar precisión en vivo de señales pasadas
         run: python -m src.signals.evaluator || true
       - name: Generar dashboard estático (reports/dashboard.html)

@@ -7,6 +7,8 @@ Uso: python -m src.signals.evaluator [--history signals/history.csv]
 from __future__ import annotations
 
 import argparse
+import json
+from pathlib import Path
 
 import pandas as pd
 import structlog
@@ -72,6 +74,33 @@ def accuracy_by_threshold(results: pd.DataFrame) -> pd.DataFrame:
     return g
 
 
+def write_live_accuracy_json(cfg, results: pd.DataFrame, acc: pd.DataFrame, data_mode: str) -> Path:
+    """Escribe reports/live_accuracy.json: precisión global + por umbral + Brier (para
+    dashboard y notificaciones). Es la acertabilidad HONESTA medida contra resultados reales."""
+    if results.empty:
+        payload = {"generated_at": pd.Timestamp.now().isoformat(), "data_mode": data_mode, "n_evaluated": 0}
+    else:
+        payload = {
+            "generated_at": pd.Timestamp.now().isoformat(),
+            "data_mode": data_mode,
+            "n_evaluated": int(len(results)),
+            "accuracy": round(float(results["hit"].mean()), 4),
+            "brier": round(float(((results["prob"] - results["hit"]) ** 2).mean()), 4),
+            "mean_prob": round(float(results["prob"].mean()), 4),
+            "by_direction": (
+                results.groupby("direction")["hit"]
+                .agg(["size", "mean"])
+                .round(4)
+                .reset_index()
+                .to_dict("records")
+            ),
+            "by_threshold": acc.round(4).to_dict("records"),
+        }
+    out = Path(cfg.reports_dir) / "live_accuracy.json"
+    out.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    return out
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Evalúa señales pasadas contra resultados reales (paper)")
     parser.add_argument("--history", default=str(ROOT / "signals" / "history.csv"))
@@ -84,10 +113,12 @@ def main(argv: list[str] | None = None) -> int:
     market = load_market_data(cfg, assets, offline=args.offline, alerts=alerts)
     hist = pd.read_csv(args.history)
     results = evaluate_signals(hist, market.prices, cfg)
+    acc = accuracy_by_threshold(results)
+    jpath = write_live_accuracy_json(cfg, results, acc, "synthetic" if args.offline else "real")
+    print(f"JSON de precisión en vivo: {jpath}")
     if results.empty:
         print("No hay señales evaluables en el histórico.")
         return 0
-    acc = accuracy_by_threshold(results)
     overall = float(results["hit"].mean())
     out_csv = cfg.reports_dir / "live_accuracy.csv"
     results.to_csv(out_csv, index=False)

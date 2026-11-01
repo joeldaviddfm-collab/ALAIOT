@@ -7,7 +7,7 @@
 El sistema **no cumple** uno o más criterios de la compuerta GO/NO-GO (ver go_no_go.md). Los resultados de abajo se reportan sin maquillar.
 
 - Modo de datos de este informe: **synthetic** (⚠️ SINTÉTICO: demo/CI, no datos de mercado reales)
-- Fecha de generación: 2026-11-01 16:39 UTC
+- Fecha de generación: 2026-11-01 17:18 UTC
 - Configuraciones/modelos probados en total: **12** (se usa en el Deflated Sharpe)
 - Semilla fija: 42
 

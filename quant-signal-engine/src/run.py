@@ -22,8 +22,8 @@ from src.signals.generator import generate_signals, write_signals
 from src.training import build_training_set
 from src.utils.alerts import AlertBus
 from src.utils.logging import setup_logging
+from src.utils.notify import load_live_accuracy, notify_signals_full
 from src.utils.seeds import set_seeds
-from src.utils.telegram import notify_signals
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -96,7 +96,10 @@ def main(argv: list[str] | None = None) -> int:
     print(signals.to_string(index=False))
     print(f"\nSeñales emitidas: {n_sig}/{len(signals)} | Alertas: {alerts.summary()}")
     print("Esto no es asesoría financiera ni garantiza rentabilidad.")
-    notify_signals(cfg, alerts, f"Señales emitidas: {n_sig}/{len(signals)}")
+    # Notificación multi-canal (Telegram/Discord/email según env) con la precisión en vivo al lado
+    notified = notify_signals_full(cfg, alerts, signals, load_live_accuracy(cfg.reports_dir))
+    if notified:
+        log.info("signals_notified", channels=notified)
     return 0
 
 
