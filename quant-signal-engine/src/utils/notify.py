@@ -47,21 +47,32 @@ def build_signals_message(cfg, signals: pd.DataFrame, accuracy: dict | None, ale
         date = str(signals["date"].iloc[0])
         mode = str(signals["data_mode"].iloc[0]) if "data_mode" in signals.columns else "real"
         lines.append(f"📅 {date} | datos: {mode}{' ⚠️ SINTÉTICOS' if mode == 'synthetic' else ''}")
-        act = signals[signals["direction"] != "nada"]
+        act = signals[signals["direction"] != "nada"].copy()
         if act.empty:
-            lines.append("🚫 Hoy no hay señales (fail-safe NADA para todos los activos).")
-        for _, s in act.iterrows():
+            lines.append("🚫 Hoy no hay señales (fail-safe NADA: ninguna llegó al umbral de emisión).")
+        else:
+            act["_score"] = act["meta_prob"].astype(float)
+            act = act.sort_values("_score", ascending=False)  # mejor primero (top 1, 2, 3...)
+        medals = {1: "🥇", 2: "🥈", 3: "🥉"}
+        dots = {"verde": "🟢", "amarillo": "🟡", "rojo": "🔴"}
+        for rk, (_, s) in enumerate(act.iterrows(), start=1):
+            mark = medals.get(rk, f"{rk}.")
+            prob = float(s.get("prob", 0))
+            band = str(s.get("band", "")) or (
+                "verde" if prob >= 0.70 else ("amarillo" if prob >= 0.50 else "rojo")
+            )
+            dot = dots.get(band, "⚪")
             top = ", ".join(
                 str(s.get(c, ""))
                 for c in ("top1", "top2", "top3")
                 if c in s and str(s.get(c, "")) not in ("", "nan")
             )
             lines.append(
-                f"• {s['asset']} → {str(s['direction']).upper()} | prob {float(s.get('prob', 0)):.2f} "
+                f"{mark}{dot} {s['asset']} → {str(s['direction']).upper()} | prob {prob:.2f} "
                 f"meta {float(s.get('meta_prob', 0)):.2f} | entry {s.get('entry_ref')} SL {s.get('stop')} "
                 f"TP {s.get('tp')} size {s.get('size')}" + (f" | top: {top}" if top else "")
             )
-        lines.append(f"Emitidas: {len(act)}/{len(signals)} (el resto NADA)")
+        lines.append(f"Emitidas: {len(act)}/{len(signals)} (umbral de emisión 0.86; el resto NADA)")
     # precisión en vivo, honesta, junto a las señales
     lines.append("📊 Precisión en vivo (paper, vs resultados reales):")
     if accuracy and int(accuracy.get("n_evaluated", 0)) > 0:

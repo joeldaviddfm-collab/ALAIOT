@@ -3,6 +3,30 @@
 [2026-11-01T17:18:00+00:00] CRITICAL: KILL SWITCH activo
 [2026-11-01T17:18:01+00:00] CRITICAL: KILL SWITCH activo
 [2026-11-01T17:18:08+00:00] INFO: run ok
-[2026-11-02T22:04:35+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
-[2026-11-02T22:04:35+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
-[2026-11-02T22:04:42+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-02T22:09:32+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-02T22:09:32+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-02T22:09:40+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-02T22:09:50+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-02T22:10:08+00:00] WARNING: AAPL: 1 saltos anómalos (máx |ret|=8.9%)
+[2026-11-02T22:10:08+00:00] WARNING: ADA-USD: 2 saltos anómalos (máx |ret|=11.2%)
+[2026-11-02T22:10:08+00:00] WARNING: AMZN: 5 saltos anómalos (máx |ret|=10.6%)
+[2026-11-02T22:10:08+00:00] WARNING: AUDUSD=X: 2 saltos anómalos (máx |ret|=10.1%)
+[2026-11-02T22:10:08+00:00] WARNING: BTC-USD: 1 saltos anómalos (máx |ret|=9.3%)
+[2026-11-02T22:10:09+00:00] WARNING: DIA: 3 saltos anómalos (máx |ret|=11.4%)
+[2026-11-02T22:10:09+00:00] WARNING: EURUSD=X: 2 saltos anómalos (máx |ret|=10.6%)
+[2026-11-02T22:10:09+00:00] WARNING: EURUSD=X: contexto bloquea señal (liquidez baja (vol z=-2.55))
+[2026-11-02T22:10:09+00:00] WARNING: GBPUSD=X: 3 saltos anómalos (máx |ret|=13.4%)
+[2026-11-02T22:10:09+00:00] WARNING: GLD: 2 saltos anómalos (máx |ret|=9.1%)
+[2026-11-02T22:10:09+00:00] WARNING: GOOGL: 1 saltos anómalos (máx |ret|=7.3%)
+[2026-11-02T22:10:09+00:00] WARNING: IWM: 1 saltos anómalos (máx |ret|=11.9%)
+[2026-11-02T22:10:10+00:00] WARNING: MSFT: 1 saltos anómalos (máx |ret|=9.1%)
+[2026-11-02T22:10:10+00:00] WARNING: NVDA: 3 saltos anómalos (máx |ret|=12.6%)
+[2026-11-02T22:10:10+00:00] WARNING: QQQ: 1 saltos anómalos (máx |ret|=8.7%)
+[2026-11-02T22:10:10+00:00] WARNING: SLV: 1 saltos anómalos (máx |ret|=10.7%)
+[2026-11-02T22:10:10+00:00] WARNING: SPY: 2 saltos anómalos (máx |ret|=10.9%)
+[2026-11-02T22:10:10+00:00] WARNING: TLT: 1 saltos anómalos (máx |ret|=7.2%)
+[2026-11-02T22:10:10+00:00] WARNING: TSLA: 1 saltos anómalos (máx |ret|=9.9%)
+[2026-11-02T22:10:11+00:00] WARNING: USDJPY=X: 4 saltos anómalos (máx |ret|=10.9%)
+[2026-11-02T22:10:11+00:00] WARNING: USO: 1 saltos anómalos (máx |ret|=9.8%)
+[2026-11-02T22:10:11+00:00] WARNING: XLE: 1 saltos anómalos (máx |ret|=12.0%)
+[2026-11-02T22:10:11+00:00] WARNING: XRP-USD: 1 saltos anómalos (máx |ret|=7.8%)

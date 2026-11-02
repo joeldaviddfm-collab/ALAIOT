@@ -2,18 +2,18 @@
   "date": "2026-11-02",
   "data_mode": "synthetic",
   "stages": {
-    "candidatos": 2,
+    "candidatos": 27,
     "kill_switch": 0,
     "bloqueo_riesgo": 0,
     "datos_invalidos": 0,
     "sin_features": 0,
     "modelo_no_disponible": 0,
-    "filtro_contexto": 0,
+    "filtro_contexto": 1,
     "regimen_desfavorable": 0,
-    "umbral_no_alcanzado": 2,
+    "umbral_no_alcanzado": 26,
     "sl_tp_invalidos": 0,
     "emitidas": 0
   },
   "emitidas": 0,
-  "candidatos": 2
+  "candidatos": 27
 }

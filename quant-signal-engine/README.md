@@ -151,6 +151,21 @@ nunca rellenamos con suposiciones.**
   gráficos, alertas e informe completo. Se regenera solo tras cada backtest y en el workflow diario
   (`python scripts/build_dashboard.py`).
 
+## 7a. Umbral de emisión, ranking y colores (lo que ves en el dashboard)
+
+- **Umbral de emisión 0.86** (`signals.min_emit_prob` en `config.yaml`): solo se emite señal
+  si la probabilidad calibrada del modelo es ≥ 0.86; si no, queda `nada` con la razón.
+  Ojo: `prob` es la **confianza estimada del modelo**, no la acertabilidad medida — la
+  acertabilidad real medida contra resultados vive en el panel "Precisión en vivo".
+- **Ranking top 1/2/3**: las señales emitidas salen ordenadas mejor primero (por `meta_prob`)
+  con columna `rank` en `signals/latest.csv`, panel 🥇🥈🥉 en el dashboard y medallas en la
+  notificación.
+- **Colores por confianza** (`signals.bands`): prob ≥ 0.70 → 🟢 verde, 0.50–0.70 → 🟡 amarillo,
+  < 0.50 → 🔴 rojo (columna `band` en el CSV, celdas coloreadas en el dashboard y punto de
+  color en Telegram/Discord/email).
+- **Universo amplio**: `python -m src.run --mode paper --universe preset` (28 activos en
+  `assets.preset`) o cualquier lista con `--assets ...`.
+
 ## 7b. Notificaciones de señales (Telegram / Discord / email)
 
 El propio motor te manda las señales del día **junto con la precisión en vivo honesta** por el canal

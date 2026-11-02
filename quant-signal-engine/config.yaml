@@ -12,6 +12,12 @@ paths:
   reports_dir: reports
   models_dir: models        # modelos versionados (gitignored)
 
+signals:
+  min_emit_prob: 0.86        # solo se EMITE señal si la prob del modelo >= 0.86 (si no: NADA)
+  bands:                     # color según confianza (prob) mostrada en dashboard/notificación
+    green_min: 0.70          # >= 0.70 verde
+    yellow_min: 0.50         # 0.50-0.70 amarillo, < 0.50 rojo
+
 assets:
   default: ["BTC-USD", "ETH-USD", "SPY", "QQQ", "EURUSD=X"]
   crypto: ["BTC-USD", "ETH-USD"]

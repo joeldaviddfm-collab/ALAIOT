@@ -43,6 +43,8 @@ SIGNAL_COLUMNS = [
     "top3",
     "reason",
     "data_mode",
+    "rank",
+    "band",
 ]
 
 
@@ -195,13 +197,14 @@ def generate_signals(
         # --- predicción ---
         pred = model.predict(row.to_frame().T)[["direction", "prob", "meta_prob", "agreement"]].iloc[0]
         direction = int(pred["direction"])
-        if direction == 0:
+        min_emit = float(cfg.get("signals.min_emit_prob", 0.86))
+        if direction == 0 or float(pred["prob"]) < min_emit:
             funnel["umbral_no_alcanzado"] += 1
             rows.append(
                 _nada_row(
                     asset,
                     date,
-                    f"umbral no alcanzado (p={pred['prob']:.2f}, meta={pred['meta_prob']:.2f}, acuerdo={pred['agreement']:.2f})",
+                    f"umbral de emisión no alcanzado (p={pred['prob']:.2f} < {min_emit:.2f}, meta={pred['meta_prob']:.2f}, acuerdo={pred['agreement']:.2f})",
                     data_mode,
                 )
             )
@@ -245,6 +248,8 @@ def generate_signals(
                 "top3": top3[2] if len(top3) > 2 else "",
                 "reason": "señal válida (paper)",
                 "data_mode": data_mode,
+                "rank": None,
+                "band": confidence_band(float(pred["prob"]), cfg),
             }
         )
         log.info(
@@ -254,11 +259,30 @@ def generate_signals(
             prob=rows[-1]["prob"],
             date=str(date.date()),
         )
-    funnel["emitidas"] = int(sum(1 for r in rows if r["direction"] in ("long", "short")))
+    emitted_idx = [i for i, r in enumerate(rows) if r["direction"] in ("long", "short")]
+    emitted_idx.sort(key=lambda i: (rows[i]["meta_prob"], rows[i]["prob"]), reverse=True)
+    for rank, i in enumerate(emitted_idx, start=1):
+        rows[i]["rank"] = rank
+    funnel["emitidas"] = len(emitted_idx)
     if funnel_out is not None:
         funnel_out.update(funnel)
     out = pd.DataFrame(rows, columns=SIGNAL_COLUMNS)
+    out["_rank"] = pd.to_numeric(out["rank"], errors="coerce")
+    out = (
+        out.sort_values(["_rank", "asset"], na_position="last").drop(columns=["_rank"]).reset_index(drop=True)
+    )
     return out
+
+
+def confidence_band(prob: float, cfg) -> str:
+    """verde >= 0.70, amarillo 0.50-0.70, rojo < 0.50 (config signals.bands)."""
+    g = float(cfg.get("signals.bands.green_min", 0.70))
+    y = float(cfg.get("signals.bands.yellow_min", 0.50))
+    if prob >= g:
+        return "verde"
+    if prob >= y:
+        return "amarillo"
+    return "rojo"
 
 
 def _nada_row(asset: str, date, reason: str, data_mode: str) -> dict:
@@ -283,6 +307,8 @@ def _nada_row(asset: str, date, reason: str, data_mode: str) -> dict:
         "top3": "",
         "reason": reason,
         "data_mode": data_mode,
+        "rank": None,
+        "band": "",
     }
 
 
@@ -296,6 +322,9 @@ def write_signals(cfg, latest: pd.DataFrame) -> tuple[pd.Timestamp, pd.DataFrame
         hist = pd.read_csv(hist_path)
         combined = pd.concat([hist, latest], ignore_index=True)
         combined = combined.drop_duplicates(subset=["date", "asset"], keep="last")
+        for c in ("rank", "band"):
+            if c in combined.columns:
+                combined[c] = combined[c].fillna("")
         combined = combined.sort_values(["date", "asset"]).reset_index(drop=True)
     else:
         combined = latest.copy()

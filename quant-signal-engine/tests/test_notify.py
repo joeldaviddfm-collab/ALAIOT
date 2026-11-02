@@ -93,6 +93,7 @@ def test_message_contains_signals_accuracy_and_disclaimer(cfg):
     assert "BTC-USD" in msg and "LONG" in msg and "0.83" in msg
     assert "72.0%" in msg and "25" in msg and "Brier" in msg
     assert "✅" in msg and "❌" in msg and "R=+1.50" in msg
+    assert "🥇" in msg and "🟢" in msg  # rank 1 + banda verde (prob 0.83)
     assert "NADA" in msg
     assert DISCLAIMER in msg
     assert "asesoría financiera" in msg

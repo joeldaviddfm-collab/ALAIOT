@@ -66,6 +66,8 @@ tbody td{padding:8px 12px;border-top:1px solid var(--line);font-family:var(--mon
 tbody tr:hover td{background:#15203a}
 td.num,th.num{text-align:right}
 .dir-long{color:var(--ok);font-weight:700}.dir-short{color:var(--bad);font-weight:700}.dir-nada{color:var(--dim)}
+.band-verde{color:var(--ok);font-weight:700}.band-amarillo{color:var(--warn);font-weight:700}.band-rojo{color:var(--bad);font-weight:700}
+.medal{font-size:18px}
 .chip{display:inline-block;padding:3px 9px;margin:2px 4px 2px 0;border-radius:8px;font-size:11.5px;border:1px solid var(--line);background:var(--panel2)}
 .chip.bad{color:var(--bad);border-color:rgba(248,113,113,.4)}
 .chip.ok{color:var(--ok);border-color:rgba(52,211,153,.4)}
@@ -125,7 +127,13 @@ def _df_table(df: pd.DataFrame, *, num_cols: tuple[str, ...] = ()) -> str:
         for c in df.columns:
             v = r[c]
             cell = _esc(v)
-            if c == "direction":
+            if (
+                c == "prob"
+                and "band" in df.columns
+                and str(r.get("band", "")) in ("verde", "amarillo", "rojo")
+            ):
+                cell = f"<span class='band-{r['band']}'>{_esc(v)}</span>"
+            elif c == "direction":
                 d = str(v).lower()
                 cell = f"<span class='dir-{d}'>{_esc(v)}</span>"
             elif c in ("¿Cumple?", "ok", "resultado") and str(v) in ("✅", "❌", "True", "False"):
@@ -416,6 +424,37 @@ def _trades_table(acc: dict | None) -> str:
     )
 
 
+def _top_panel(latest: pd.DataFrame) -> str:
+    """Top señales emitidas, mejor primero (rank 1,2,3...) con medalla y color de confianza."""
+    if latest is None or latest.empty or "rank" not in latest.columns:
+        return ""
+    em = latest[latest["direction"].isin(["long", "short"])].copy()
+    em["_r"] = pd.to_numeric(em["rank"], errors="coerce")
+    em = em.sort_values("_r").head(3)
+    if em.empty:
+        return ""
+    medals = {1: "🥇", 2: "🥈", 3: "🥉"}
+    cards = ""
+    for _, s in em.iterrows():
+        rk = int(pd.to_numeric(s["rank"], errors="coerce") or 0)
+        band = str(s.get("band", "rojo"))
+        border = {"verde": "var(--ok)", "amarillo": "var(--warn)", "rojo": "var(--bad)"}.get(
+            band, "var(--bad)"
+        )
+        cards += (
+            f"<div class='card' style='border-left:4px solid {border}'>"
+            f"<span class='medal'>{medals.get(rk, rk)}</span> <b>{_esc(s['asset'])}</b> "
+            f"<span class='dir-{str(s['direction']).lower()}'>{str(s['direction']).upper()}</span> "
+            f"<span class='band-{band}'>prob {float(s['prob']):.2f}</span> meta {float(s.get('meta_prob', 0)):.2f} "
+            f"| SL {s.get('stop')} TP {s.get('tp')} size {s.get('size')}</div>"
+        )
+    return (
+        "<div class='panel' style='margin-bottom:14px'><h3>🥇 Top señales de hoy (mejor primero; umbral de emisión 0.86)</h3>"
+        + cards
+        + "</div>"
+    )
+
+
 def build_dashboard(cfg) -> Path:
     """Genera reports/dashboard.html auto-contenido a partir de signals/ y reports/."""
     root: Path = cfg.root
@@ -602,7 +641,7 @@ def build_dashboard(cfg) -> Path:
 
 <section><h2><span class="n">02</span>Señales de hoy + acertabilidad en vivo<span class="hint">signals/latest.csv · precisión medida contra resultados reales</span></h2>
 <div class="two">
-  <div><h3 style="color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin:0 0 8px">Señales (PAPER)</h3>{sig_table}</div>
+  <div>{_top_panel(latest)}<h3 style="color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin:0 0 8px">Señales (PAPER)</h3>{sig_table}</div>
   <div>{_live_accuracy_panel(acc_json)}{_trades_table(acc_json)}{_funnel_panel(funnel_json)}</div>
 </div></section>
 

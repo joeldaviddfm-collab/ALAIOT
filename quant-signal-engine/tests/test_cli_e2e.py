@@ -62,6 +62,7 @@ def test_run_paper_offline(tiny_config):
         "top3",
     }
     assert set(latest["direction"]).issubset({"long", "short", "nada"})
+    assert {"rank", "band"} <= set(latest.columns)  # ranking top1/2/3 + banda de color
     hist = pd.read_csv(ROOT / "signals" / "history.csv")
     assert len(hist) == len(latest)
     # correr de nuevo el mismo día no duplica
