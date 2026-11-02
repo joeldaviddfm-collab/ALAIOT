@@ -184,6 +184,20 @@ automáticamente.
 El token del bot es un secreto: nunca lo subas a GitHub (`.env` está gitignored y `gitleaks.yml` vigila
 que no se filtre). Si se filtra, revócalo con @BotFather (`/revoke`).
 
+## 7c. Ver el dashboard en una URL pública (GitHub Pages)
+
+El dashboard (`reports/dashboard.html`) es estático y auto-contenido, así que se puede publicar
+tal cual como sitio web en **GitHub Pages** y se actualiza solo cada día con los datos reales:
+
+1. Activa Pages: repo → **Settings → Pages → Build and deployment → Source: "GitHub Actions"**.
+2. El workflow `.github/workflows/pages.yml` despliega `reports/` en cada push (incluido el
+   commit diario de señales) y también post-cierre por horario.
+3. URL resultante: **`https://joeldaviddfm-collab.github.io/ALAIOT/`** (abre directo el dashboard).
+
+⚠️ En plan gratis de GitHub, **Pages solo funciona con repo público**. Si prefieres mantener
+`ALAIOT` privado: (a) ábrelo local con doble clic en `reports/dashboard.html`, o (b) sube la
+carpeta `reports/` a Netlify Drop / Cloudflare Pages (URL pública sin cambiar la privacidad).
+
 ## 8. Automatización (GitHub Actions)
 
 - `daily_signals.yml`: cada día tras el cierre (21:40 UTC días hábiles + 00:40 UTC cripto)
