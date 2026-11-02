@@ -1,2 +1,9 @@
-[2026-11-01T10:00:00+00:00] INFO: demo offline: datos SINTETICOS (no son datos de mercado)
-[2026-11-01T10:00:01+00:00] WARNING: demo: 0/5 senales (fail-safe NADA)
+[2026-11-01T10:00:00+00:00] WARNING: demo
+[2026-11-01T17:18:00+00:00] CRITICAL: KILL SWITCH activo
+[2026-11-01T17:18:00+00:00] CRITICAL: KILL SWITCH activo
+[2026-11-01T17:18:01+00:00] CRITICAL: KILL SWITCH activo
+[2026-11-01T17:18:08+00:00] INFO: run ok
+[2026-11-02T01:04:05+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-02T01:04:05+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
+[2026-11-02T01:04:25+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
+[2026-11-02T01:04:33+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)

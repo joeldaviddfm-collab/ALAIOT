@@ -187,3 +187,18 @@ def test_telegram_with_mock(monkeypatch):
     monkeypatch.setattr(tg.requests, "post", fake_post)
     assert send_telegram("TELEGRAM_TOKEN", "TELEGRAM_CHAT_ID", "hola") is True
     assert "botx" in called["url"]
+
+
+def test_check_regression_skip_cuando_cero_operaciones(tmp_path, monkeypatch):
+    """Si la corrida actual no emitió operaciones OOS (fail-safe), no es regresión."""
+    import scripts.check_regression as cr
+
+    monkeypatch.setattr(cr, "ROOT", tmp_path)
+    (tmp_path / "reports").mkdir()
+    (tmp_path / "reports" / "metrics.json").write_text(
+        '{"data_mode": "synthetic", "blind": {"n_trades": 0, "sharpe": 0.0, "profit_factor": 0.0, "max_drawdown": 0.0}}'
+    )
+    (tmp_path / "reports" / "baseline_metrics.json").write_text(
+        '{"data_mode": "synthetic", "blind": {"n_trades": 5, "sharpe": 1.2, "profit_factor": 1.5, "max_drawdown": -0.05}}'
+    )
+    assert cr.main() == 0

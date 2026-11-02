@@ -30,9 +30,7 @@ concurrency:
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    # sin bloque 'environment': deploy-pages usa/crea solo el entorno github-pages
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
