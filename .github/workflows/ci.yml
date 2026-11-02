@@ -17,7 +17,7 @@ defaults:
     working-directory: quant-signal-engine
 
 jobs:
-  test-lint:
+  lint-types:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,8 +32,38 @@ jobs:
         run: ruff format --check .
       - name: Tipos (mypy)
         run: mypy src
-      - name: Tests con cobertura
-        run: pytest --cov=src --cov-report=term-missing --cov-report=xml
+
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+      - name: Tests con cobertura (log subido como artifact ci-logs)
+        run: pytest --tb=short --cov=src --cov-report=term-missing --cov-report=xml 2>&1 | tee pytest.log
+      - name: Subir logs de CI (pytest.log, coverage.xml)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-logs
+          path: |
+            quant-signal-engine/pytest.log
+            quant-signal-engine/coverage.xml
+          retention-days: 14
+
+  backtest-regression:
+    runs-on: ubuntu-latest
+    needs: [lint-types, tests]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
       - name: Backtest de regresion (offline, rapido, datos sinteticos)
         run: python -m src.backtest --walk-forward --report --offline --quick
       - name: Comparar metricas vs baseline (falla si empeoran > umbral)
