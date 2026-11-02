@@ -66,6 +66,24 @@ def _acc() -> dict:
         "mean_prob": 0.78,
         "data_mode": "real",
         "by_threshold": [{"bucket": "0.70-0.75", "n": 10, "accuracy": 0.7}],
+        "recent_trades": [
+            {
+                "date": "2026-10-30",
+                "asset": "BTC-USD",
+                "direction": "long",
+                "prob": 0.83,
+                "realized_r": 1.5,
+                "hit": 1,
+            },
+            {
+                "date": "2026-10-31",
+                "asset": "SPY",
+                "direction": "short",
+                "prob": 0.71,
+                "realized_r": -0.4,
+                "hit": 0,
+            },
+        ],
     }
 
 
@@ -74,6 +92,7 @@ def test_message_contains_signals_accuracy_and_disclaimer(cfg):
     msg = build_signals_message(cfg, _signals(), _acc(), alerts)
     assert "BTC-USD" in msg and "LONG" in msg and "0.83" in msg
     assert "72.0%" in msg and "25" in msg and "Brier" in msg
+    assert "✅" in msg and "❌" in msg and "R=+1.50" in msg
     assert "NADA" in msg
     assert DISCLAIMER in msg
     assert "asesoría financiera" in msg

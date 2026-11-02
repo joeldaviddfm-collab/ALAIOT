@@ -30,6 +30,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p = argparse.ArgumentParser(prog="src.run", description="quant-signal-engine (solo PAPER TRADING)")
     p.add_argument("--assets", nargs="+", default=None, help="lista de activos (default: config.yaml)")
     p.add_argument(
+        "--universe",
+        choices=["default", "preset"],
+        default="default",
+        help="default = assets.default; preset = lista amplia de acciones/ETFs/FX/cripto",
+    )
+    p.add_argument(
         "--mode", default="paper", choices=["paper"], help="solo se admite 'paper'; live está desactivado"
     )
     p.add_argument("--date", default=None, help="fecha de la señal (YYYY-MM-DD); default: hoy")
@@ -37,6 +43,13 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     p.add_argument("--retrain", action="store_true", help="fuerza reentrenamiento del modelo")
     p.add_argument("--config", default=None, help="ruta alternativa de config.yaml")
     return p.parse_args(argv)
+
+
+def resolve_assets(cfg, args) -> list[str]:
+    """Resuelve el universo de activos: --universe preset (amplio) o default/--assets."""
+    if getattr(args, "universe", "default") == "preset":
+        return list(cfg.get("assets.preset", cfg.get("assets.default", [])))
+    return args.assets or list(cfg.get("assets.default", []))
 
 
 def train_model(cfg, market, alerts: AlertBus) -> SignalModel:
@@ -68,7 +81,8 @@ def main(argv: list[str] | None = None) -> int:
     alerts = AlertBus(cfg.reports_dir)
     log.info("run_start", mode="paper", offline=args.offline, assets=args.assets)
 
-    assets = args.assets or list(cfg.get("assets.default", []))
+    assets = resolve_assets(cfg, args)
+    log.info("universe", n=len(assets), universe=args.universe, assets=assets[:10])
     market = load_market_data(cfg, assets, offline=args.offline, alerts=alerts)
 
     model_path = cfg.models_dir / "signal_model.joblib"
@@ -88,8 +102,16 @@ def main(argv: list[str] | None = None) -> int:
             model = train_model(cfg, market, alerts)
 
     asof = pd.Timestamp(args.date) if args.date else None
-    signals = generate_signals(cfg, market, model, alerts, asof_date=asof)
+    funnel: dict = {}
+    signals = generate_signals(cfg, market, model, alerts, asof_date=asof, funnel_out=funnel)
     write_signals(cfg, signals)
+    from src.signals.generator import write_funnel
+
+    sig_date = str(signals["date"].iloc[0]) if len(signals) else pd.Timestamp.now().strftime("%Y-%m-%d")
+    sig_mode = str(signals["data_mode"].iloc[0]) if len(signals) else "real"
+    funnel_path = write_funnel(cfg, funnel, date=sig_date, data_mode=sig_mode)
+    log.info("filter_funnel", path=str(funnel_path), stages=funnel)
+    print(f"Funnel de filtros: {funnel} -> {funnel_path}")
 
     n_sig = int((signals["direction"] != "nada").sum())
     print("\n=== SEÑALES (PAPER TRADING) ===")

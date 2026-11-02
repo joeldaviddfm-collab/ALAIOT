@@ -95,6 +95,9 @@ def write_live_accuracy_json(cfg, results: pd.DataFrame, acc: pd.DataFrame, data
                 .to_dict("records")
             ),
             "by_threshold": acc.round(4).to_dict("records"),
+            "recent_trades": results.tail(15)[
+                ["date", "asset", "direction", "prob", "realized_r", "hit"]
+            ].to_dict("records"),
         }
     out = Path(cfg.reports_dir) / "live_accuracy.json"
     out.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")

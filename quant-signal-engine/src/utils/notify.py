@@ -73,6 +73,12 @@ def build_signals_message(cfg, signals: pd.DataFrame, accuracy: dict | None, ale
             lines.append(f"   • prob {row['bucket']}: {float(row['accuracy']):.0%} (n={row['n']})")
     else:
         lines.append("   • Aún sin señales evaluables (se mide al cerrar cada operación paper).")
+    for tr in (accuracy or {}).get("recent_trades", [])[-5:]:
+        mark = "✅" if int(tr.get("hit", 0)) == 1 else "❌"
+        lines.append(
+            f"   {mark} {tr.get('date')} {tr.get('asset')} {str(tr.get('direction')).upper()} "
+            f"p={float(tr.get('prob', 0)):.2f} → R={float(tr.get('realized_r', 0)):+.2f}"
+        )
     lines.append(f"🚨 Alertas: {alerts.summary()}")
     lines.append(DISCLAIMER)
     return "\n".join(lines)

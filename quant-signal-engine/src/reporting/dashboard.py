@@ -128,7 +128,7 @@ def _df_table(df: pd.DataFrame, *, num_cols: tuple[str, ...] = ()) -> str:
             if c == "direction":
                 d = str(v).lower()
                 cell = f"<span class='dir-{d}'>{_esc(v)}</span>"
-            elif c in ("¿Cumple?", "ok") and str(v) in ("✅", "❌", "True", "False"):
+            elif c in ("¿Cumple?", "ok", "resultado") and str(v) in ("✅", "❌", "True", "False"):
                 good = str(v) in ("✅", "True")
                 cell = f"<span class='{'dir-long' if good else 'dir-short'}'>{_esc(v)}</span>"
             tds.append(f"<td class='{'num' if c in num_cols else ''}'>{cell}</td>")
@@ -360,6 +360,62 @@ def _progress_panel(cfg, signals_dir: Path, blind: dict) -> str:
     )
 
 
+FUNNEL_LABELS = {
+    "candidatos": "🧺 Candidatos (universo)",
+    "kill_switch": "⛔ Kill switch activo",
+    "bloqueo_riesgo": "🛡️ Bloqueo gestión de riesgo (DD/correlación)",
+    "datos_invalidos": "🩺 Datos inválidos / no disponibles",
+    "sin_features": "🧮 Sin features para la fecha",
+    "modelo_no_disponible": "🤖 Modelo no disponible",
+    "filtro_contexto": "📅 Filtro de contexto (FOMC/CPI/NFP…)",
+    "regimen_desfavorable": "📉 Régimen desfavorable",
+    "umbral_no_alcanzado": "🎯 Umbral prob/meta no alcanzado",
+    "sl_tp_invalidos": "📏 SL/TP inválidos (RR)",
+    "emitidas": "✅ SEÑALES EMITIDAS (paper)",
+}
+
+
+def _funnel_panel(fj: dict | None) -> str:
+    """Panel del funnel de filtros: cuántos candidatos sobreviven cada etapa."""
+    if not fj or not fj.get("stages"):
+        return ""
+    stages = fj["stages"]
+    mx = max([v for v in stages.values()] + [1])
+    rows = ""
+    for k, lab in FUNNEL_LABELS.items():
+        v = int(stages.get(k, 0))
+        w = 100.0 * v / mx
+        emph = " style='color:var(--ok);font-weight:700'" if k == "emitidas" else ""
+        rows += (
+            f"<div class='prow'><span class='lab'{emph}>{lab}</span>"
+            f"<span class='val'{emph}>{v}</span></div>"
+            f"<div class='bar'><i style='width:{w:.1f}%'></i></div>"
+        )
+    return (
+        f"<div class='panel' style='margin-top:14px'><h3>Funnel de filtros — {fj.get('date', '')} "
+        f"(datos {fj.get('data_mode', '')})</h3>{rows}"
+        "<p class='sub'>Cada etapa descarta lo que no cumple; ante la duda, NADA. "
+        "Solo lo que pasa TODOS los filtros se emite como señal.</p></div>"
+    )
+
+
+def _trades_table(acc: dict | None) -> str:
+    """Tabla de resultados por operación (paper): ✅/❌ de cada señal evaluada."""
+    if not acc or not acc.get("recent_trades"):
+        return ""
+    df = pd.DataFrame(acc["recent_trades"])
+    if df.empty:
+        return ""
+    df = df.copy()
+    df["resultado"] = df["hit"].map({1: "✅", 0: "❌"})
+    df = df[["date", "asset", "direction", "prob", "realized_r", "resultado"]]
+    return (
+        "<h3 style='color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin:16px 0 8px'>"
+        "Resultados por operación (cada señal evaluada vs resultado real)</h3>"
+        + _df_table(df, num_cols=("prob", "realized_r"))
+    )
+
+
 def build_dashboard(cfg) -> Path:
     """Genera reports/dashboard.html auto-contenido a partir de signals/ y reports/."""
     root: Path = cfg.root
@@ -379,6 +435,14 @@ def build_dashboard(cfg) -> Path:
     verdict, gonogo_df = _parse_go_no_go(root / "go_no_go.md")
     is_go = "APTO" in verdict and "NO APTO" not in verdict
     mode_cls = "warn" if data_mode == "synthetic" else "acc"
+
+    funnel_json = None
+    fj = reports / "filter_funnel.json"
+    if fj.exists():
+        try:
+            funnel_json = json.loads(fj.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001
+            funnel_json = None
 
     acc_json = None
     la = reports / "live_accuracy.json"
@@ -539,7 +603,7 @@ def build_dashboard(cfg) -> Path:
 <section><h2><span class="n">02</span>Señales de hoy + acertabilidad en vivo<span class="hint">signals/latest.csv · precisión medida contra resultados reales</span></h2>
 <div class="two">
   <div><h3 style="color:var(--dim);font-size:11px;text-transform:uppercase;letter-spacing:1px;margin:0 0 8px">Señales (PAPER)</h3>{sig_table}</div>
-  {_live_accuracy_panel(acc_json)}
+  <div>{_live_accuracy_panel(acc_json)}{_trades_table(acc_json)}{_funnel_panel(funnel_json)}</div>
 </div></section>
 
 <section><h2><span class="n">03</span>Compuerta GO / NO-GO</h2>

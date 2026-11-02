@@ -15,6 +15,10 @@ paths:
 assets:
   default: ["BTC-USD", "ETH-USD", "SPY", "QQQ", "EURUSD=X"]
   crypto: ["BTC-USD", "ETH-USD"]
+  # universo amplio para --universe preset: cripto, acciones, ETFs y forex (yfinance/ccxt)
+  preset: ["BTC-USD", "ETH-USD", "SOL-USD", "XRP-USD", "ADA-USD", "SPY", "QQQ", "IWM", "DIA",
+           "TLT", "GLD", "SLV", "USO", "XLF", "XLE", "AAPL", "MSFT", "NVDA", "AMZN", "TSLA",
+           "META", "GOOGL", "JPM", "EURUSD=X", "GBPUSD=X", "USDJPY=X", "AUDUSD=X"]
 
 data:
   start: "2018-01-01"

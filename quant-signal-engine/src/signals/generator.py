@@ -11,6 +11,8 @@ Salidas:
 
 from __future__ import annotations
 
+import json
+
 import numpy as np
 import pandas as pd
 import structlog
@@ -62,6 +64,35 @@ def _paper_equity_from_history(cfg) -> tuple[pd.Series, list]:
     return pd.Series(eq), trades
 
 
+FUNNEL_STAGES = (
+    "candidatos",
+    "kill_switch",
+    "bloqueo_riesgo",
+    "datos_invalidos",
+    "sin_features",
+    "modelo_no_disponible",
+    "filtro_contexto",
+    "regimen_desfavorable",
+    "umbral_no_alcanzado",
+    "sl_tp_invalidos",
+    "emitidas",
+)
+
+
+def write_funnel(cfg, funnel: dict, *, date: str, data_mode: str):
+    """Escribe reports/filter_funnel.json: cuántos candidatos pasan cada filtro."""
+    payload = {
+        "date": date,
+        "data_mode": data_mode,
+        "stages": {k: int(funnel.get(k, 0)) for k in FUNNEL_STAGES},
+        "emitidas": int(funnel.get("emitidas", 0)),
+        "candidatos": int(funnel.get("candidatos", 0)),
+    }
+    path = cfg.reports_dir / "filter_funnel.json"
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    return path
+
+
 def generate_signals(
     cfg,
     market,
@@ -69,9 +100,12 @@ def generate_signals(
     alerts: AlertBus,
     *,
     asof_date: pd.Timestamp | None = None,
+    funnel_out: dict | None = None,
 ) -> pd.DataFrame:
     rows: list[dict] = []
+    funnel = {k: 0 for k in FUNNEL_STAGES}
     assets = list(market.prices.keys())
+    funnel["candidatos"] = len(set(assets) | set(market.blocked))
     rm = RiskManager(cfg)
     events = load_event_dates()
     data_mode = market.data_mode
@@ -79,6 +113,7 @@ def generate_signals(
     # --- kill switch global: ninguna señal ---
     if rm.kill_switch_active():
         alerts.add("CRITICAL", "KILL SWITCH activo: TODAS las señales son NADA")
+        funnel["kill_switch"] = funnel["candidatos"]
         for asset in assets + [a for a in market.blocked if a not in assets]:
             rows.append(_nada_row(asset, asof_date, "kill switch activo", data_mode))
         return pd.DataFrame(rows, columns=SIGNAL_COLUMNS)
@@ -91,6 +126,7 @@ def generate_signals(
 
     X, _groups = build_feature_matrix(market.prices, market.global_df, cfg)
     if X.empty:
+        funnel["datos_invalidos"] = funnel["candidatos"]
         # sin precios válidos no hay features: todo NADA (fail-safe)
         for asset in sorted(set(market.prices) | set(market.blocked)):
             reason = market.blocked.get(asset, "sin datos de precios")
@@ -101,6 +137,7 @@ def generate_signals(
 
     for asset in sorted(set(assets) | set(market.blocked)):
         if asset in market.blocked:
+            funnel["datos_invalidos"] += 1
             alerts.add("CRITICAL", f"{asset}: señal NADA ({market.blocked[asset]})")
             rows.append(
                 _nada_row(asset, asof_date, f"datos no disponibles: {market.blocked[asset]}", data_mode)
@@ -111,12 +148,14 @@ def generate_signals(
         for w in rep.warnings:
             alerts.add("WARNING", f"{asset}: {w}")
         if not rep.ok:
+            funnel["datos_invalidos"] += 1
             alerts.add("CRITICAL", f"{asset}: señal NADA por validación fallida: {rep.issues}")
             rows.append(
                 _nada_row(asset, asof_date, f"validación fallida: {'; '.join(rep.issues)}", data_mode)
             )
             continue
         if not allowed:
+            funnel["bloqueo_riesgo"] += 1
             rows.append(
                 _nada_row(asset, asof_date, f"bloqueado por gestión de riesgo: {risk_reason}", data_mode)
             )
@@ -125,17 +164,20 @@ def generate_signals(
         if asof_date is not None:
             sub = sub[sub["date"] <= asof_date]
         if sub.empty:
+            funnel["sin_features"] += 1
             rows.append(_nada_row(asset, asof_date, "sin features para la fecha", data_mode))
             continue
         row = sub.iloc[-1]
         date = pd.Timestamp(row["date"])
         if model is None or not model.trained:
+            funnel["modelo_no_disponible"] += 1
             alerts.add("CRITICAL", f"{asset}: modelo no entrenado => señal NADA")
             rows.append(_nada_row(asset, date, "modelo no disponible", data_mode))
             continue
         # --- filtros de contexto ---
         block = context_block(row, cfg, events, date)
         if block is not None:
+            funnel["filtro_contexto"] += 1
             alerts.add("WARNING", f"{asset}: contexto bloquea señal ({block})")
             rows.append(_nada_row(asset, date, f"filtro de contexto: {block}", data_mode))
             continue
@@ -144,6 +186,7 @@ def generate_signals(
         if pd.notna(regime_id) and model.regime_perf:
             wr = model.regime_perf.get(int(regime_id))
             if wr is not None and wr < float(cfg.get("context_filters.bad_regime_winrate_min", 0.45)):
+                funnel["regimen_desfavorable"] += 1
                 alerts.add(
                     "WARNING", f"{asset}: régimen {int(regime_id)} con winrate histórico {wr:.2f} < umbral"
                 )
@@ -153,6 +196,7 @@ def generate_signals(
         pred = model.predict(row.to_frame().T)[["direction", "prob", "meta_prob", "agreement"]].iloc[0]
         direction = int(pred["direction"])
         if direction == 0:
+            funnel["umbral_no_alcanzado"] += 1
             rows.append(
                 _nada_row(
                     asset,
@@ -177,6 +221,7 @@ def generate_signals(
             stop = entry_ref + dist
             tp = entry_ref - rr_needed * atr_v
         if stop <= 0 or tp <= 0:
+            funnel["sl_tp_invalidos"] += 1
             rows.append(_nada_row(asset, date, "stop/TP inválidos", data_mode))
             continue
         size = float(
@@ -209,6 +254,9 @@ def generate_signals(
             prob=rows[-1]["prob"],
             date=str(date.date()),
         )
+    funnel["emitidas"] = int(sum(1 for r in rows if r["direction"] in ("long", "short")))
+    if funnel_out is not None:
+        funnel_out.update(funnel)
     out = pd.DataFrame(rows, columns=SIGNAL_COLUMNS)
     return out
 

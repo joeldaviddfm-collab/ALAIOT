@@ -75,6 +75,23 @@ def test_run_paper_offline(tiny_config):
     assert r2.returncode == 0
     hist2 = pd.read_csv(ROOT / "signals" / "history.csv")
     assert len(hist2) == len(hist)
+    # funnel de filtros escrito tras la corrida
+    funnel = json.loads((ROOT / "reports" / "filter_funnel.json").read_text())
+    assert funnel["candidatos"] >= 2
+    assert funnel["emitidas"] == int((latest["direction"] != "nada").sum())
+    assert set(funnel["stages"]) >= {"candidatos", "umbral_no_alcanzado", "emitidas"}
+
+
+def test_resolve_assets_universe_preset():
+    from src.config import Config
+    from src.run import parse_args, resolve_assets
+
+    cfg = Config()
+    args = parse_args(["--mode", "paper", "--universe", "preset"])
+    assets = resolve_assets(cfg, args)
+    assert len(assets) >= 20 and "BTC-USD" in assets and "SPY" in assets and "EURUSD=X" in assets
+    args2 = parse_args(["--mode", "paper", "--assets", "AAPL", "TSLA"])
+    assert resolve_assets(cfg, args2) == ["AAPL", "TSLA"]
 
 
 def test_backtest_walkforward_report_offline(tiny_config):
