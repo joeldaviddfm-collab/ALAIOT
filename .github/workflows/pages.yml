@@ -1,11 +1,11 @@
 name: Deploy dashboard (GitHub Pages)
 
-# Publica quant-signal-engine/reports/ como sitio estático en GitHub Pages.
-# Se dispara en cada push a la rama (incluido el commit del workflow diario de señales)
-# y también en horario post-cierre por si acaso.
+# Publica quant-signal-engine/reports/ como sitio estatico en GitHub Pages.
+# Se dispara en cada push a la rama (incluido el commit del workflow diario de senales)
+# y tambien post-cierre por horario.
 #
-# Para activarlo: Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".
-# NOTA: en plan gratis el repo debe ser PÚBLICO para exponer Pages.
+# Requiere: Settings -> Pages -> Build and deployment -> Source: "GitHub Actions"
+# (en plan gratis, el repo debe ser publico).
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
     paths:
       - "quant-signal-engine/reports/**"
       - "quant-signal-engine/signals/**"
-      - "quant-signal-engine/.github/workflows/pages.yml"
+      - ".github/workflows/pages.yml"
   workflow_dispatch:
   schedule:
     - cron: "50 21 * * 1-5"   # tras el cierre EE.UU.
@@ -37,11 +37,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
-      - name: Empaquetar reports/ como sitio estático
+      - name: Empaquetar reports/ como sitio estatico
         run: |
           mkdir -p /tmp/qse-site
           cp -r quant-signal-engine/reports/. /tmp/qse-site/
-          # la raíz abre directo el dashboard
+          # la raiz abre directo el dashboard
           cp quant-signal-engine/reports/dashboard.html /tmp/qse-site/index.html
           ls -la /tmp/qse-site | head
       - uses: actions/upload-pages-artifact@v3

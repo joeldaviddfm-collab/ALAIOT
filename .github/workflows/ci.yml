@@ -1,9 +1,20 @@
-name: CI
+name: CI (quant-signal-engine)
+
 on:
   push:
-    branches: [main]
+    branches: [arena/5622970a-alaiot, main]
+    paths:
+      - "quant-signal-engine/**"
+      - ".github/workflows/ci.yml"
   pull_request:
-    branches: [main]
+    branches: [arena/5622970a-alaiot, main]
+    paths:
+      - "quant-signal-engine/**"
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: quant-signal-engine
 
 jobs:
   test-lint:
@@ -15,6 +26,8 @@ jobs:
           python-version: "3.11"
       - name: Instalar dependencias
         run: pip install -r requirements.txt
+      - name: Instalar herramientas de calidad
+        run: pip install ruff mypy pytest pytest-cov
       - name: Lint (ruff)
         run: ruff check .
       - name: Formato (ruff format)
@@ -23,7 +36,7 @@ jobs:
         run: mypy src
       - name: Tests con cobertura
         run: pytest --cov=src --cov-report=term-missing --cov-report=xml
-      - name: Backtest de regresión (offline, rápido, datos sintéticos)
+      - name: Backtest de regresion (offline, rapido, datos sinteticos)
         run: python -m src.backtest --walk-forward --report --offline --quick
-      - name: Comparar métricas vs baseline (falla si empeoran > umbral)
+      - name: Comparar metricas vs baseline (falla si empeoran > umbral)
         run: python scripts/check_regression.py

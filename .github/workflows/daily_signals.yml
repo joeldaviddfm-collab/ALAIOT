@@ -2,12 +2,16 @@ name: Daily signals (paper trading)
 on:
   schedule:
     - cron: "40 21 * * 1-5"  # tras el cierre de EE.UU. (21:40 UTC, lun- vie)
-    - cron: "40 0 * * *"     # cripto (cierre del día UTC)
+    - cron: "40 0 * * *"     # cripto (cierre del dia UTC)
   workflow_dispatch:
 
 permissions:
   contents: write
   issues: write
+
+defaults:
+  run:
+    working-directory: quant-signal-engine
 
 jobs:
   signals:
@@ -19,7 +23,7 @@ jobs:
           python-version: "3.11"
       - name: Instalar dependencias
         run: pip install -r requirements.txt
-      - name: Generar señales (SOLO PAPER TRADING)
+      - name: Generar senales (SOLO PAPER TRADING, datos reales)
         run: python -m src.run --mode paper
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
@@ -27,11 +31,11 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-      - name: Evaluar precisión en vivo de señales pasadas
+      - name: Evaluar precision en vivo de senales pasadas
         run: python -m src.signals.evaluator || true
-      - name: Generar dashboard estático (reports/dashboard.html)
+      - name: Generar dashboard estatico (reports/dashboard.html)
         run: python scripts/build_dashboard.py
-      - name: Subir dashboard como artifact descargable (funciona con repo privado)
+      - name: Subir dashboard como artifact descargable
         uses: actions/upload-artifact@v4
         with:
           name: qse-dashboard
@@ -42,22 +46,22 @@ jobs:
             reports/live_accuracy.json
             signals/latest.csv
           retention-days: 30
-      - name: Healthcheck (datos frescos, señales generadas)
+      - name: Healthcheck (datos frescos, senales generadas)
         id: hc
         continue-on-error: true
         run: python scripts/healthcheck.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
-      - name: Commit de señales y reportes
+      - name: Commit de senales y reportes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add signals/ reports/ report.md go_no_go.md 2>/dev/null || true
-          git diff --cached --quiet || git commit -m "chore(signals): señales diarias paper $(date -u +%Y-%m-%d)"
+          git diff --cached --quiet || git commit -m "chore(signals): senales diarias paper $(date -u +%Y-%m-%d)"
           git push
-      - name: Abrir issue automático si el healthcheck falló
+      - name: Abrir issue automatico si el healthcheck fallo
         if: steps.hc.outcome == 'failure'
-        run: gh issue create --title "🚨 Healthcheck diario falló ($(date -u +%Y-%m-%d))" --body "No se generaron señales recientes o los datos están viejos. Revisa reports/alerts.log y reports/healthcheck.log." || true
+        run: gh issue create --title "🚨 Healthcheck diario fallo ($(date -u +%Y-%m-%d))" --body "No se generaron senales recientes o los datos estan viejos. Revisa quant-signal-engine/reports/alerts.log" || true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

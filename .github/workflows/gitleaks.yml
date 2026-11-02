@@ -12,4 +12,4 @@ jobs:
           fetch-depth: 0
       - uses: gitleaks/gitleaks-action@v2
         with:
-          config-path: .gitleaks.toml
+          config-path: quant-signal-engine/.gitleaks.toml
