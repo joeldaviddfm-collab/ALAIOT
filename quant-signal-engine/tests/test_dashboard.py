@@ -76,8 +76,19 @@ def test_build_dashboard_self_contained(cfg):
         "# Informe\n\n## 1. Resultados\n\n| M | V |\n|---|---|\n| Sharpe | 1.2 |\n", encoding="utf-8"
     )
     (cfg.reports_dir / "alerts.log").write_text(
-        "[2026-11-01T10:00:00+00:00] WARNING: demo\n", encoding="utf-8"
+        "[2026-11-01T10:00:00+00:00] WARNING: demo\n"
+        "[2026-11-01T17:18:00+00:00] CRITICAL: KILL SWITCH activo\n"
+        "[2026-11-01T17:18:00+00:00] CRITICAL: KILL SWITCH activo\n"
+        "[2026-11-01T17:18:01+00:00] CRITICAL: KILL SWITCH activo\n"
+        "[2026-11-01T17:18:08+00:00] INFO: run ok\n",
+        encoding="utf-8",
     )
+    pd.DataFrame(
+        [
+            {"date": d, "asset": "BTC-USD", "direction": "nada"}
+            for d in ("2026-10-29", "2026-10-30", "2026-10-31")
+        ]
+    ).to_csv(cfg.signals_dir / "history.csv", index=False)
     (cfg.reports_dir / "live_accuracy.json").write_text(
         json.dumps(
             {

@@ -89,6 +89,21 @@ font:12px var(--mono);color:var(--dim);max-height:300px}
 .report p{margin:8px 0}
 footer{color:var(--dim);font-size:12px;text-align:center;padding:28px 20px 44px;border-top:1px solid var(--line);margin-top:40px;line-height:1.7}
 @media print{header{position:static}.card:hover{transform:none}}
+.alrow{display:flex;gap:10px;align-items:baseline;padding:7px 12px;border-top:1px solid var(--line);font-size:12.5px}
+.alrow:first-child{border-top:none}
+.alrow:hover{background:#15203a}
+.alrow .ts{color:var(--dim);font:11px var(--mono);white-space:nowrap}
+.lvl{display:inline-block;min-width:74px;text-align:center;padding:2px 8px;border-radius:7px;font:700 10.5px var(--mono);letter-spacing:.5px}
+.lvl-CRITICAL,.lvl-ERROR{color:var(--bad);background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.45)}
+.lvl-WARNING{color:var(--warn);background:rgba(251,191,36,.10);border:1px solid rgba(251,191,36,.4)}
+.lvl-INFO{color:var(--acc);background:rgba(91,140,255,.10);border:1px solid rgba(91,140,255,.35)}
+.lvl-OK{color:var(--ok);background:rgba(52,211,153,.10);border:1px solid rgba(52,211,153,.4)}
+.alrow .msg{font-family:var(--mono);font-size:12px;word-break:break-word}
+.alrow .cnt{color:var(--dim);font:700 11px var(--mono);white-space:nowrap}
+.bar{height:9px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);overflow:hidden;margin-top:6px}
+.bar>i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+.prow{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;margin-top:12px}
+.prow .lab{color:var(--dim)} .prow .val{font:700 12.5px var(--mono)}
 """
 
 
@@ -283,6 +298,68 @@ def _go_checklist(gonogo_df: pd.DataFrame) -> str:
     )
 
 
+def _alerts_panel(reports: Path) -> str:
+    """Panel de alertas con chips de nivel; deduplica repetidas consecutivas (muestra ×N)."""
+    alog = reports / "alerts.log"
+    if not alog.exists():
+        return "<p class='sub'>Sin alertas registradas.</p>"
+    rx = re.compile(r"^\[(?P<ts>[^\]]+)\]\s+(?P<lvl>[A-Z]+):\s*(?P<msg>.*)$")
+    parsed = []
+    for line in alog.read_text(encoding="utf-8").splitlines():
+        m = rx.match(line.strip())
+        if m:
+            parsed.append((m.group("ts"), m.group("lvl"), m.group("msg").strip()))
+        elif line.strip():
+            parsed.append(("", "INFO", line.strip()))
+    if not parsed:
+        return "<p class='sub'>Sin alertas registradas.</p>"
+    # deduplica consecutivas iguales -> cuenta
+    groups: list[tuple[str, str, str, int]] = []
+    for ts, lvl, msg in parsed:
+        if groups and groups[-1][1] == lvl and groups[-1][2] == msg:
+            groups[-1] = (ts, lvl, msg, groups[-1][3] + 1)
+        else:
+            groups.append((ts, lvl, msg, 1))
+    groups = groups[-25:]  # últimas 25
+    rows = []
+    for ts, lvl, msg, cnt in reversed(groups):  # más reciente primero
+        short_ts = ts[5:16].replace("T", " ") if ts else ""
+        cnt_html = f"<span class='cnt'>×{cnt}</span>" if cnt > 1 else ""
+        rows.append(
+            f"<div class='alrow'><span class='ts'>{_esc(short_ts)}</span>"
+            f"<span class='lvl lvl-{html.escape(lvl)}'>{_esc(lvl)}</span>"
+            f"<span class='msg'>{_esc(msg)}</span>{cnt_html}</div>"
+        )
+    return "<div class='tablewrap'>" + "".join(rows) + "</div>"
+
+
+def _progress_panel(cfg, signals_dir: Path, blind: dict) -> str:
+    """Progreso REAL hacia los umbrales GO: días de paper y operaciones OOS medidas."""
+    min_days = int(cfg.get("go_no_go.paper_min_days", 90))
+    min_trades = int(cfg.get("go_no_go.min_trades_oos", 100))
+    days = 0
+    h = signals_dir / "history.csv"
+    if h.exists():
+        try:
+            days = int(pd.read_csv(h)["date"].nunique())
+        except Exception:  # noqa: BLE001
+            days = 0
+    trades = int(blind.get("n_trades") or 0)
+    pd_pct = min(100.0, 100.0 * days / min_days) if min_days else 100.0
+    tr_pct = min(100.0, 100.0 * trades / min_trades) if min_trades else 100.0
+    return (
+        "<div class='panel' style='margin-top:14px'><h3>Progreso real hacia APTO (sin trucar)</h3>"
+        f"<div class='prow'><span class='lab'>📅 Días de paper trading acumulados</span>"
+        f"<span class='val'>{days} / {min_days}</span></div>"
+        f"<div class='bar'><i style='width:{pd_pct:.1f}%'></i></div>"
+        f"<div class='prow'><span class='lab'>📈 Operaciones out-of-sample (test ciego)</span>"
+        f"<span class='val'>{trades} / {min_trades}</span></div>"
+        f"<div class='bar'><i style='width:{tr_pct:.1f}%'></i></div>"
+        "<p class='sub'>Estos números se cuentan de verdad (history.csv y test ciego). La compuerta pasa a "
+        "APTO solo cuando TODOS los criterios se cumplen con datos reales; no se editan a mano.</p></div>"
+    )
+
+
 def build_dashboard(cfg) -> Path:
     """Genera reports/dashboard.html auto-contenido a partir de signals/ y reports/."""
     root: Path = cfg.root
@@ -416,12 +493,8 @@ def build_dashboard(cfg) -> Path:
         if p.exists():
             charts_html += f"<figure><img src='{_img_b64(p)}' alt='{caption}'><figcaption>{caption}</figcaption></figure>"
 
-    # alertas recientes
-    alerts_html = "<p class='sub'>Sin alertas registradas.</p>"
-    alog = reports / "alerts.log"
-    if alog.exists():
-        tail = alog.read_text(encoding="utf-8").splitlines()[-40:]
-        alerts_html = "<pre>" + _esc("\n".join(tail)) + "</pre>"
+    # alertas recientes (panel con chips de nivel y deduplicado)
+    alerts_html = _alerts_panel(reports)
 
     # informe completo (report.md → HTML)
     report_html = "<p class='sub'>Ejecuta <code>python -m src.backtest --walk-forward --report</code> para generar el informe.</p>"
@@ -471,7 +544,7 @@ def build_dashboard(cfg) -> Path:
 
 <section><h2><span class="n">03</span>Compuerta GO / NO-GO</h2>
 <div class="two">
-  <div>{_df_table(gonogo_df)}</div>
+  <div>{_df_table(gonogo_df)}{_progress_panel(cfg, signals_dir, blind)}</div>
   {_go_checklist(gonogo_df)}
 </div></section>
 

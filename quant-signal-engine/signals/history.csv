@@ -1,6 +1,4 @@
-date,asset,direction,prob,meta_prob,agreement,entry_ref,stop,tp,size,top1,top2,top3,reason,data_mode
-2026-10-30,BTC-USD,nada,0.0,0.0,0.0,,,,0.0,,,,"umbral no alcanzado (p=0.00, meta=0.01, acuerdo=0.33)",synthetic
-2026-10-30,ETH-USD,nada,0.0,0.0,0.0,,,,0.0,,,,"umbral no alcanzado (p=0.00, meta=0.02, acuerdo=0.33)",synthetic
-2026-10-30,EURUSD=X,nada,0.0,0.0,0.0,,,,0.0,,,,"umbral no alcanzado (p=0.00, meta=0.02, acuerdo=0.33)",synthetic
-2026-10-30,QQQ,nada,0.0,0.0,0.0,,,,0.0,,,,"umbral no alcanzado (p=0.00, meta=0.01, acuerdo=0.33)",synthetic
-2026-10-30,SPY,nada,0.0,0.0,0.0,,,,0.0,,,,"umbral no alcanzado (p=0.00, meta=0.02, acuerdo=0.33)",synthetic
+date,asset,direction
+2026-10-29,BTC-USD,nada
+2026-10-30,BTC-USD,nada
+2026-10-31,BTC-USD,nada

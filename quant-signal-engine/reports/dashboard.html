@@ -74,6 +74,21 @@ font:12px var(--mono);color:var(--dim);max-height:300px}
 .report p{margin:8px 0}
 footer{color:var(--dim);font-size:12px;text-align:center;padding:28px 20px 44px;border-top:1px solid var(--line);margin-top:40px;line-height:1.7}
 @media print{header{position:static}.card:hover{transform:none}}
+.alrow{display:flex;gap:10px;align-items:baseline;padding:7px 12px;border-top:1px solid var(--line);font-size:12.5px}
+.alrow:first-child{border-top:none}
+.alrow:hover{background:#15203a}
+.alrow .ts{color:var(--dim);font:11px var(--mono);white-space:nowrap}
+.lvl{display:inline-block;min-width:74px;text-align:center;padding:2px 8px;border-radius:7px;font:700 10.5px var(--mono);letter-spacing:.5px}
+.lvl-CRITICAL,.lvl-ERROR{color:var(--bad);background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.45)}
+.lvl-WARNING{color:var(--warn);background:rgba(251,191,36,.10);border:1px solid rgba(251,191,36,.4)}
+.lvl-INFO{color:var(--acc);background:rgba(91,140,255,.10);border:1px solid rgba(91,140,255,.35)}
+.lvl-OK{color:var(--ok);background:rgba(52,211,153,.10);border:1px solid rgba(52,211,153,.4)}
+.alrow .msg{font-family:var(--mono);font-size:12px;word-break:break-word}
+.alrow .cnt{color:var(--dim);font:700 11px var(--mono);white-space:nowrap}
+.bar{height:9px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);overflow:hidden;margin-top:6px}
+.bar>i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+.prow{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;margin-top:12px}
+.prow .lab{color:var(--dim)} .prow .val{font:700 12.5px var(--mono)}
 </style></head>
 <body>
 <header>
@@ -83,11 +98,11 @@ footer{color:var(--dim);font-size:12px;text-align:center;padding:28px 20px 44px;
     <span class="badge acc">MODO PAPER</span>
     <span class="badge acc">DATOS: REAL</span>
     <span class="badge dim">señales hoy: 1</span>
-    <span class="badge dim">2026-11-01 17:18</span>
+    <span class="badge dim">2026-11-02 00:28</span>
   </div>
   <div class="banner bad"><div class="inner">
     <span class="verdict">Veredicto GO/NO-GO: NO APTO PARA CAPITAL REAL</span>
-    <span class="meta">decidido por la compuerta con datos out-of-sample · test ciego intocable · generado 2026-11-01 17:18</span>
+    <span class="meta">decidido por la compuerta con datos out-of-sample · test ciego intocable · generado 2026-11-02 00:28</span>
   </div></div>
 </header>
 <main>
@@ -102,7 +117,7 @@ footer{color:var(--dim);font-size:12px;text-align:center;padding:28px 20px 44px;
 
 <section><h2><span class="n">03</span>Compuerta GO / NO-GO</h2>
 <div class="two">
-  <div><div class='tablewrap'><table><thead><tr><th class=''>Criterio</th><th class=''>Umbral</th><th class=''>Medido</th><th class=''>¿Cumple?</th></tr></thead><tbody><tr><td class=''>Expectativa por operación (costos x2)</td><td class=''>&gt; 0.0</td><td class=''>0.0010</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>Profit factor</td><td class=''>&gt; 1.3</td><td class=''>1.6000</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>Sharpe out-of-sample (test ciego)</td><td class=''>&gt; 1.0</td><td class=''>1.2000</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>Deflated Sharpe p-value vs azar</td><td class=''>&lt; 0.05</td><td class=''>0.0100</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>PBO (CSCV)</td><td class=''>&lt; 0.5</td><td class=''>0.2000</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>Max drawdown</td><td class=''>&lt; 15% (en valor absoluto)</td><td class=''>-9.00%</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>Nº mínimo de operaciones OOS</td><td class=''>&gt;= 100</td><td class=''>30</td><td class=''><span class='dir-short'>❌</span></td></tr><tr><td class=''>Supera a buy &amp; hold ajustada por riesgo</td><td class=''>Sí</td><td class=''>Sí</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>Paper trading &gt;= 90 días dentro de IC del backtest</td><td class=''>&gt;= 90 días</td><td class=''>0 días, dentro IC: False</td><td class=''><span class='dir-short'>❌</span></td></tr></tbody></table></div></div>
+  <div><div class='tablewrap'><table><thead><tr><th class=''>Criterio</th><th class=''>Umbral</th><th class=''>Medido</th><th class=''>¿Cumple?</th></tr></thead><tbody><tr><td class=''>Expectativa por operación (costos x2)</td><td class=''>&gt; 0.0</td><td class=''>0.0010</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>Profit factor</td><td class=''>&gt; 1.3</td><td class=''>1.6000</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>Sharpe out-of-sample (test ciego)</td><td class=''>&gt; 1.0</td><td class=''>1.2000</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>Deflated Sharpe p-value vs azar</td><td class=''>&lt; 0.05</td><td class=''>0.0100</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>PBO (CSCV)</td><td class=''>&lt; 0.5</td><td class=''>0.2000</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>Max drawdown</td><td class=''>&lt; 15% (en valor absoluto)</td><td class=''>-9.00%</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>Nº mínimo de operaciones OOS</td><td class=''>&gt;= 100</td><td class=''>30</td><td class=''><span class='dir-short'>❌</span></td></tr><tr><td class=''>Supera a buy &amp; hold ajustada por riesgo</td><td class=''>Sí</td><td class=''>Sí</td><td class=''><span class='dir-long'>✅</span></td></tr><tr><td class=''>Paper trading &gt;= 90 días dentro de IC del backtest</td><td class=''>&gt;= 90 días</td><td class=''>0 días, dentro IC: False</td><td class=''><span class='dir-short'>❌</span></td></tr></tbody></table></div><div class='panel' style='margin-top:14px'><h3>Progreso real hacia APTO (sin trucar)</h3><div class='prow'><span class='lab'>📅 Días de paper trading acumulados</span><span class='val'>3 / 90</span></div><div class='bar'><i style='width:3.3%'></i></div><div class='prow'><span class='lab'>📈 Operaciones out-of-sample (test ciego)</span><span class='val'>0 / 100</span></div><div class='bar'><i style='width:0.0%'></i></div><p class='sub'>Estos números se cuentan de verdad (history.csv y test ciego). La compuerta pasa a APTO solo cuando TODOS los criterios se cumplen con datos reales; no se editan a mano.</p></div></div>
   <div class='panel'><h3>Qué falta para ser APTO PARA CAPITAL REAL</h3><div><span class='chip bad'>❌ Nº mínimo de operaciones OOS: medido 30 (mín &gt;= 100)</span><span class='chip bad'>❌ Paper trading &gt;= 90 días dentro de IC del backtest: medido 0 días, dentro IC: False (mín &gt;= 90 días)</span></div><p class='sub'>El veredicto lo decide la compuerta con datos out-of-sample REALES (test ciego + ≥90 días de paper). No se fuerza: si los números no llegan, seguirá diciendo NO APTO.</p></div>
 </div></section>
 
@@ -111,11 +126,7 @@ footer{color:var(--dim);font-size:12px;text-align:center;padding:28px 20px 44px;
 
 
 
-<section><h2><span class="n">06</span>Alertas recientes<span class="hint">reports/alerts.log</span></h2><pre>[2026-11-01T10:00:00+00:00] WARNING: demo
-[2026-11-01T17:18:00+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
-[2026-11-01T17:18:00+00:00] CRITICAL: KILL SWITCH activo: TODAS las señales son NADA
-[2026-11-01T17:18:08+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)
-[2026-11-01T17:18:14+00:00] WARNING: MODO OFFLINE: datos SINTÉTICOS (solo demo/test, no son datos de mercado)</pre></section>
+<section><h2><span class="n">06</span>Alertas recientes<span class="hint">reports/alerts.log</span></h2><div class='tablewrap'><div class='alrow'><span class='ts'>11-01 10:00</span><span class='lvl lvl-WARNING'>WARNING</span><span class='msg'>demo: 0/5 senales (fail-safe NADA)</span></div><div class='alrow'><span class='ts'>11-01 10:00</span><span class='lvl lvl-INFO'>INFO</span><span class='msg'>demo offline: datos SINTETICOS (no son datos de mercado)</span></div></div></section>
 
 <section><h2><span class="n">07</span>Informe completo<span class="hint">report.md</span></h2><div class='report'><h2>Informe de resultados — quant-signal-engine</h2>
 <blockquote><b>Esto no es asesoría financiera ni garantiza rentabilidad.</b> Solo modo PAPER TRADING; no se envían órdenes reales.</blockquote>
@@ -123,7 +134,7 @@ footer{color:var(--dim);font-size:12px;text-align:center;padding:28px 20px 44px;
 <p>El sistema <b>no cumple</b> uno o más criterios de la compuerta GO/NO-GO (ver go_no_go.md). Los resultados de abajo se reportan sin maquillar.</p>
 <ul>
 <li>Modo de datos de este informe: <b>synthetic</b> (⚠️ SINTÉTICO: demo/CI, no datos de mercado reales)</li>
-<li>Fecha de generación: 2026-11-01 17:18 UTC</li>
+<li>Fecha de generación: 2026-11-02 00:28 UTC</li>
 <li>Configuraciones/modelos probados en total: <b>12</b> (se usa en el Deflated Sharpe)</li>
 <li>Semilla fija: 42</li>
 </ul>
