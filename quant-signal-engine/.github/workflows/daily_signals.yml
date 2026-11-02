@@ -31,6 +31,17 @@ jobs:
         run: python -m src.signals.evaluator || true
       - name: Generar dashboard estático (reports/dashboard.html)
         run: python scripts/build_dashboard.py
+      - name: Subir dashboard como artifact descargable (funciona con repo privado)
+        uses: actions/upload-artifact@v4
+        with:
+          name: qse-dashboard
+          path: |
+            reports/dashboard.html
+            reports/*.png
+            reports/metrics.json
+            reports/live_accuracy.json
+            signals/latest.csv
+          retention-days: 30
       - name: Healthcheck (datos frescos, señales generadas)
         id: hc
         continue-on-error: true
